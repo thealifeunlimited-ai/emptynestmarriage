@@ -1,0 +1,9 @@
+{
+  "name": "emptynestmarriage",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Empty Nest Marriage site — Netlify functions (guide delivery + email drip)",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

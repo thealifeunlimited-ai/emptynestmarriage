@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="logo-emblem.svg">
+  <title>Billy & Maryruth Mitchell | Couples Coaching for Empty Nesters</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F3EA;
+      --green: #0F2A1E;
+      --gold: #C8A24A;
+      --white: #FFFFFF;
+      --cream-muted: #E8DCC8;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--green); line-height: 1.7; }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--green);
+      border-bottom: 3px solid var(--gold);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 32px; flex-wrap: wrap; gap: 12px;
+    }
+    .nav-brand {
+      font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 2px; color: var(--gold);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+    .nav-links a {
+      font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--cream); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.nav-cta {
+      background: var(--gold); color: var(--green); padding: 9px 20px;
+      border-radius: 4px; font-weight: 700;
+    }
+    .nav-links a.nav-cta:hover { background: var(--cream); color: var(--green); }
+
+    /* HERO */
+    .hero { background: var(--green); padding: 90px 24px 100px; text-align: center; }
+    .hero-eyebrow { font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+    .hero h1 { font-family: 'Oswald', sans-serif; font-size: clamp(38px, 6.5vw, 72px); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--cream); line-height: 1.08; margin-bottom: 28px; max-width: 880px; margin-left: auto; margin-right: auto; }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(18px, 2.5vw, 25px); color: var(--cream-muted); max-width: 640px; margin: 0 auto 40px; }
+    .btn-gold { display: inline-block; background: var(--gold); color: var(--green); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 18px 48px; text-decoration: none; transition: all 0.2s; }
+    .btn-gold:hover { background: var(--cream); transform: translateY(-2px); }
+    .btn-outline { display: inline-block; background: transparent; color: var(--gold); border: 2px solid var(--gold); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 16px 40px; text-decoration: none; transition: all 0.2s; }
+    .btn-outline:hover { background: var(--gold); color: var(--green); }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* SECTIONS */
+    .section { padding: 80px 24px; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .section-label { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; text-align: center; }
+    .section h2 { font-family: 'Oswald', sans-serif; font-size: clamp(28px, 4vw, 46px); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; line-height: 1.15; margin-bottom: 24px; text-align: center; }
+    .section .intro-p { font-size: 18px; color: #2a4a38; max-width: 640px; margin: 0 auto 12px; text-align: center; }
+
+    /* INTRO / ABOUT STRIP */
+    .about-strip { background: var(--white); border-top: 2px solid var(--green); border-bottom: 2px solid var(--green); }
+    .about-inner { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: center; max-width: 900px; margin: 0 auto; }
+    .about-photo { border: 2px solid var(--green); border-radius: 8px; overflow: hidden; box-shadow: 6px 6px 0 var(--gold); line-height: 0; }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .about-text .section-label, .about-text h2 { text-align: left; }
+    .about-text h2 { margin-bottom: 20px; }
+    .about-text p { font-size: 17px; color: #2a4a38; margin-bottom: 18px; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text .emphasis { font-weight: 600; color: var(--green); }
+
+    /* EXPLORE CARDS */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 50px; }
+    .card {
+      background: var(--white); border: 2px solid var(--green); border-radius: 8px;
+      padding: 36px 30px; box-shadow: 5px 5px 0 var(--cream-muted);
+      display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s;
+      text-align: left;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 5px 5px 0 var(--gold); }
+    .card-icon {
+      font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700;
+      color: var(--green); background: var(--gold);
+      width: 52px; height: 52px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+    }
+    .card h3 { font-family: 'Oswald', sans-serif; font-size: 21px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+    .card p { font-size: 15px; color: #3a5a48; margin-bottom: 24px; flex: 1; }
+    .card a {
+      font-family: 'Oswald', sans-serif; font-size: 14px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase; color: var(--green);
+      text-decoration: none; border-bottom: 2px solid var(--gold); padding-bottom: 3px;
+      align-self: flex-start; transition: color 0.2s;
+    }
+    .card a:hover { color: var(--gold); }
+
+    /* QUOTE */
+    .quote-section { background: var(--green); text-align: center; }
+    .quote-avatar { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); box-shadow: 0 6px 20px rgba(0,0,0,0.3); margin-bottom: 32px; }
+    .quote-section blockquote { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(22px, 3vw, 34px); color: var(--cream); line-height: 1.5; margin-bottom: 24px; max-width: 720px; margin-left: auto; margin-right: auto; }
+    .quote-attr { font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+
+    /* FINAL CTA */
+    .final { background: var(--cream); text-align: center; }
+    .final-box {
+      background: var(--green); border: 2px solid var(--gold); border-radius: 8px;
+      padding: 60px 48px; box-shadow: 6px 6px 0 var(--gold); max-width: 760px; margin: 0 auto;
+    }
+    .final-box h2 { color: var(--cream); margin-bottom: 16px; }
+    .final-box p { color: var(--cream-muted); font-size: 17px; max-width: 500px; margin: 0 auto 36px; }
+
+    /* DAN CTA */
+    .dan-cta { display: block; width: 100%; background: var(--gold); color: var(--green); font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 28px 32px; text-align: center; text-decoration: none; transition: background 0.2s; }
+    .dan-cta:hover { background: var(--green); color: var(--gold); }
+
+    /* FOOTER */
+    .footer { background: var(--green); color: var(--cream-muted); text-align: center; padding: 40px 24px; border-top: 3px solid var(--gold); }
+    .footer .fbrand { font-family: 'Oswald', sans-serif; font-size: 16px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .footer .flinks { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin: 14px 0; }
+    .footer .flinks a { color: var(--cream); text-decoration: none; font-size: 14px; font-family: 'Oswald', sans-serif; letter-spacing: 1px; text-transform: uppercase; }
+    .footer .flinks a:hover { color: var(--gold); }
+    .footer .fsmall { font-size: 13px; opacity: 0.7; margin-top: 10px; }
+
+    @media (max-width: 768px) {
+      .nav { padding: 14px 20px; }
+      .nav-links { gap: 16px; }
+      .hero { padding: 64px 20px 70px; }
+      .section { padding: 56px 20px; }
+      .about-inner { grid-template-columns: 1fr; gap: 32px; }
+      .cards { grid-template-columns: 1fr; }
+      .final-box { padding: 44px 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-brand" style="display:flex;align-items:center;gap:10px;"><img src="logo-emblem-light.svg" alt="Empty Nest Marriage" style="height:38px;width:auto;"><span>Empty Nest Marriage</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="my-coaching-page.html">Free Guide</a>
+      <a href="sales-page.html">The Program</a>
+      <a href="reignite-framework.html">The Framework</a>
+      <a href="faq-page.html">FAQ</a>
+      <a href="#start" class="nav-cta">Get Started</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Couples Coaching for Empty Nesters</p>
+    <h1>Rediscover Your Purpose, Your Passion, <span>&amp; Each Other.</span></h1>
+    <p class="hero-sub">The kids are gone and the house is quiet. We help couples 50+ reconnect — more intimacy, more fun, and a marriage that feels alive again.</p>
+    <div class="hero-btns">
+      <a href="my-coaching-page.html" class="btn-gold">Get the Free Guide →</a>
+      <a href="sales-page.html" class="btn-outline">Explore the Program</a>
+    </div>
+    <p style="margin-top:32px; font-family:'Oswald',sans-serif; font-size:14px; letter-spacing:3px; text-transform:uppercase; color:var(--gold);">EmptyNestMarriage.com</p>
+  </section>
+
+  <!-- ABOUT STRIP -->
+  <section class="section about-strip">
+    <div class="about-inner">
+      <div class="about-photo">
+        <img src="billy-maryruth.jpg" alt="Billy and Maryruth Mitchell">
+      </div>
+      <div class="about-text">
+        <p class="section-label">We've Been Where You Are</p>
+        <h2>Hi, We're Billy &amp; Maryruth.</h2>
+        <p>We're a real couple who coaches real couples. We know this season because we've lived it — that quiet dinner table, the feeling of being more like roommates than partners.</p>
+        <p>We're not therapists, and we're definitely not stuffy. It's real talk with a little humor and a lot of heart, grounded in faith and built for couples like you.</p>
+        <p class="emphasis">We help empty nesters rediscover their purpose, passion, and each other — leading to greater intimacy, fun, and better sex.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORE CARDS -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">Where to Start</p>
+      <h2>Your Next Step Is Right Here</h2>
+      <p class="intro-p">However you like to start — dip a toe in or dive deep — there's a path for you.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">1</div>
+          <h3>The Free Guide</h3>
+          <p>Grab "Reignite: 5 Shifts for Empty Nesters" — real, doable steps you can try tonight. The easiest place to begin.</p>
+          <a href="my-coaching-page.html">Get the Guide →</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">2</div>
+          <h3>The Program</h3>
+          <p>Ready to go deeper? See exactly how our coaching works, what's included, and whether we're a fit for you.</p>
+          <a href="sales-page.html">Explore Reignite →</a>
+        </div>
+        <div class="card">
+          <div class="card-icon">3</div>
+          <h3>Got Questions?</h3>
+          <p>Honest answers to the things couples actually ask us — over coffee, no corporate speak, no fine print.</p>
+          <a href="faq-page.html">Read the FAQ →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="section quote-section">
+    <div class="section-inner">
+      <img class="quote-avatar" src="billy-maryruth.jpg" alt="Billy and Maryruth Mitchell">
+      <blockquote>This chapter — the one after the kids leave — can be the best one of your marriage. We mean that.</blockquote>
+      <p class="quote-attr">— Billy &amp; Maryruth Mitchell</p>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section final" id="start">
+    <div class="final-box">
+      <p class="section-label" style="color:var(--gold);">Ready?</p>
+      <h2>Let's Make This Chapter<br>the Best One Yet.</h2>
+      <p>Start with the free guide — no pressure, no countdown timers, no nonsense. Just the first step toward the relationship you actually want.</p>
+      <a href="my-coaching-page.html" class="btn-gold">Get the Free Guide →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="fbrand">Billy &amp; Maryruth Mitchell</div>
+    <div>Couples Coaching for Empty Nesters</div>
+    <div style="color:var(--gold); font-family:'Oswald',sans-serif; letter-spacing:2px; text-transform:uppercase; font-size:14px; margin-top:6px;">EmptyNestMarriage.com</div>
+    <div class="flinks">
+      <a href="index.html">Home</a>
+      <a href="my-coaching-page.html">Free Guide</a>
+      <a href="sales-page.html">The Program</a>
+      <a href="faq-page.html">FAQ</a>
+    </div>
+    <div class="fsmall">Rediscover your purpose, passion, and each other.</div>
+  </footer>
+
+</body>
+</html>

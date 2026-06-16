@@ -1,0 +1,6 @@
+# Netlify configuration for EmptyNestMarriage.com
+# Tells Netlify where the serverless functions live.
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"

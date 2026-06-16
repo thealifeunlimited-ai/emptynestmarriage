@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="logo-emblem.svg">
+  <title>Reignite | Couples Coaching for Empty Nesters — Billy & Maryruth Mitchell</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F3EA;
+      --green: #0F2A1E;
+      --gold: #C8A24A;
+      --white: #FFFFFF;
+      --cream-muted: #E8DCC8;
+    }
+    body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--green); line-height: 1.7; }
+
+    /* NAV */
+    .nav { position: sticky; top: 0; z-index: 100; background: var(--green); border-bottom: 3px solid var(--gold); display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; flex-wrap: wrap; gap: 12px; }
+    .nav-brand { font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); text-decoration: none; }
+    .nav-links { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+    .nav-links a { font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cream); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.active { color: var(--gold); border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+    .nav-links a.nav-cta { background: var(--gold); color: var(--green); padding: 9px 20px; border-radius: 4px; font-weight: 700; }
+    .nav-links a.nav-cta:hover { background: var(--cream); color: var(--green); }
+    @media (max-width: 768px) { .nav { padding: 14px 20px; } .nav-links { gap: 16px; } }
+
+    /* HERO */
+    .hero { background: var(--green); padding: 80px 24px 90px; text-align: center; }
+    .hero-eyebrow { font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+    .hero h1 { font-family: 'Oswald', sans-serif; font-size: clamp(36px, 6vw, 64px); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--cream); line-height: 1.1; margin-bottom: 28px; max-width: 860px; margin-left: auto; margin-right: auto; }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(18px, 2.5vw, 24px); color: var(--cream-muted); max-width: 640px; margin: 0 auto 40px; }
+    .btn-gold { display: inline-block; background: var(--gold); color: var(--green); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 18px 48px; text-decoration: none; transition: all 0.2s ease; border: none; cursor: pointer; }
+    .btn-gold:hover { background: var(--cream); transform: translateY(-2px); }
+
+    /* SECTIONS */
+    .section { padding: 80px 24px; }
+    .section-inner { max-width: 760px; margin: 0 auto; }
+    .section-label { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .section h2 { font-family: 'Oswald', sans-serif; font-size: clamp(28px, 4vw, 44px); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; line-height: 1.15; margin-bottom: 28px; }
+    .section p { font-size: 17px; color: #2a4a38; margin-bottom: 22px; }
+    .section p:last-child { margin-bottom: 0; }
+    .lead-in { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; color: var(--green); }
+    .emphasis { font-weight: 600; color: var(--green); }
+
+    .alt { background: var(--white); border-top: 2px solid var(--green); border-bottom: 2px solid var(--green); }
+
+    /* STORY pull */
+    .pull { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(22px, 3vw, 30px); color: var(--green); border-left: 4px solid var(--gold); padding-left: 24px; margin: 32px 0; line-height: 1.4; }
+
+    /* THREE PILLARS */
+    .pillars { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 36px; }
+    .pillar { background: var(--cream); border: 2px solid var(--green); border-radius: 8px; padding: 28px 30px; box-shadow: 4px 4px 0 var(--cream-muted); }
+    .pillar h3 { font-family: 'Oswald', sans-serif; font-size: 19px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; color: var(--green); }
+    .pillar p { font-size: 16px; margin: 0; }
+
+    /* INCLUDED LIST */
+    .included { list-style: none; margin-top: 36px; }
+    .included li { background: var(--white); border: 2px solid var(--green); border-radius: 8px; padding: 22px 26px 22px 56px; margin-bottom: 16px; position: relative; font-size: 16px; box-shadow: 3px 3px 0 var(--cream-muted); }
+    .included li::before { content: "✓"; position: absolute; left: 20px; top: 22px; color: var(--gold); font-weight: 700; font-size: 18px; }
+    .included strong { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; font-size: 17px; font-weight: 600; display: block; margin-bottom: 4px; color: var(--green); }
+    .included .aside { font-style: italic; color: var(--gold); font-size: 14px; }
+
+    /* FOR / NOT FOR */
+    .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 36px; }
+    .fit-card { border: 2px solid var(--green); border-radius: 8px; padding: 32px 28px; }
+    .fit-card.yes { background: var(--green); box-shadow: 5px 5px 0 var(--gold); }
+    .fit-card.no { background: var(--white); box-shadow: 5px 5px 0 var(--cream-muted); }
+    .fit-card h3 { font-family: 'Oswald', sans-serif; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px; }
+    .fit-card.yes h3 { color: var(--gold); }
+    .fit-card.no h3 { color: var(--green); }
+    .fit-card ul { list-style: none; }
+    .fit-card li { font-size: 15px; padding: 8px 0 8px 26px; position: relative; line-height: 1.5; }
+    .fit-card.yes li { color: var(--cream); border-bottom: 1px solid #1e4030; }
+    .fit-card.no li { color: #2a4a38; border-bottom: 1px solid var(--cream-muted); }
+    .fit-card li:last-child { border-bottom: none; }
+    .fit-card.yes li::before { content: "✓"; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+    .fit-card.no li::before { content: "✕"; position: absolute; left: 0; color: #b05a45; font-weight: 700; }
+    .fit-note { margin-top: 28px; font-style: italic; font-size: 16px; color: #2a4a38; }
+
+    /* TRANSFORMATION */
+    .transform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 36px; }
+    .transform-col { border-radius: 8px; padding: 32px 28px; border: 2px solid var(--green); }
+    .transform-col.before { background: var(--white); box-shadow: 5px 5px 0 var(--cream-muted); }
+    .transform-col.after { background: var(--green); box-shadow: 5px 5px 0 var(--gold); }
+    .transform-col h3 { font-family: 'Oswald', sans-serif; font-size: 16px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 18px; }
+    .transform-col.before h3 { color: #8a5a45; }
+    .transform-col.after h3 { color: var(--gold); }
+    .transform-col ul { list-style: none; }
+    .transform-col li { font-size: 15px; padding: 10px 0 10px 24px; position: relative; line-height: 1.5; }
+    .transform-col.before li { color: #4a5a50; border-bottom: 1px solid var(--cream-muted); }
+    .transform-col.after li { color: var(--cream); border-bottom: 1px solid #1e4030; }
+    .transform-col li:last-child { border-bottom: none; }
+    .transform-col.before li::before { content: "—"; position: absolute; left: 0; color: #b08a5a; }
+    .transform-col.after li::before { content: "→"; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+
+    /* QUOTE / PHOTO */
+    .quote-section { background: var(--green); text-align: center; }
+    .quote-avatar { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); box-shadow: 0 6px 20px rgba(0,0,0,0.3); margin-bottom: 32px; }
+    .quote-section blockquote { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(22px, 3vw, 32px); color: var(--cream); line-height: 1.5; margin-bottom: 24px; }
+    .quote-attr { font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+
+    /* TESTIMONIALS */
+    .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 24px; margin-top: 36px; }
+    .testimonial { background: var(--white); border: 2px solid var(--green); border-radius: 8px; padding: 30px; box-shadow: 4px 4px 0 var(--cream-muted); }
+    .testimonial .tlabel { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .testimonial p { font-size: 16px; font-style: italic; color: var(--green); margin-bottom: 14px; }
+    .testimonial-name { font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #2a4a38; font-style: normal; }
+
+    /* FAQ ACCORDION */
+    .faq { background: var(--white); border: 2px solid var(--green); border-radius: 8px; margin-bottom: 16px; box-shadow: 4px 4px 0 var(--cream-muted); transition: box-shadow 0.2s; overflow: hidden; }
+    .faq.open { box-shadow: 4px 4px 0 var(--gold); }
+    .faq-q { display: flex; align-items: center; gap: 16px; padding: 22px 26px; cursor: pointer; user-select: none; }
+    .faq-q h3 { font-family: 'Oswald', sans-serif; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; line-height: 1.3; flex: 1; color: var(--green); }
+    .faq-toggle { font-family: 'Oswald', sans-serif; font-size: 26px; color: var(--gold); flex-shrink: 0; transition: transform 0.25s ease; line-height: 1; }
+    .faq.open .faq-toggle { transform: rotate(45deg); }
+    .faq-a-wrap { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq.open .faq-a-wrap { max-height: 500px; }
+    .faq-a { font-size: 15px; color: #2a4a38; padding: 0 26px 24px 26px; }
+
+    /* FINAL CTA */
+    .final { background: var(--green); text-align: center; }
+    .final h2 { color: var(--cream); }
+    .final p { color: var(--cream-muted); }
+    .final .pull-final { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(24px, 4vw, 36px); color: var(--gold); margin: 0 auto 32px; max-width: 600px; }
+    .final .btn-row { margin-top: 16px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-outline { display: inline-block; background: transparent; color: var(--gold); border: 2px solid var(--gold); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 16px 40px; text-decoration: none; transition: all 0.2s; }
+    .btn-outline:hover { background: var(--gold); color: var(--green); }
+    .signoff { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: var(--cream); margin-top: 40px; }
+
+    /* DAN CTA */
+    .dan-cta { display: block; width: 100%; background: var(--gold); color: var(--green); font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 28px 32px; text-align: center; text-decoration: none; transition: background 0.2s; }
+    .dan-cta:hover { background: var(--green); color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .hero { padding: 60px 20px 70px; }
+      .section { padding: 56px 20px; }
+      .fit-grid, .transform-grid { grid-template-columns: 1fr; }
+      .final .btn-row { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-brand" style="display:flex;align-items:center;gap:10px;"><img src="logo-emblem-light.svg" alt="Empty Nest Marriage" style="height:38px;width:auto;"><span>Empty Nest Marriage</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="my-coaching-page.html">Free Guide</a>
+      <a href="sales-page.html" class="active">The Program</a>
+      <a href="reignite-framework.html">The Framework</a>
+      <a href="faq-page.html">FAQ</a>
+      <a href="#start" class="nav-cta">Get Started</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">The Reignite Program</p>
+    <h1>The Kids Are Gone. Your Marriage <span>Doesn't Have to Go With Them.</span></h1>
+    <p class="hero-sub">A coaching program for couples 50+ who are ready to stop being roommates and start being in love again — more connection, more fun, and yeah, better sex.</p>
+    <a href="#start" class="btn-gold">Get the Free Guide →</a>
+  </section>
+
+  <!-- OPENING STORY -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">If This Is You, Keep Reading</p>
+      <h2>You Sat Down to Dinner and Realized You Had Nothing to Say.</h2>
+      <p>Not because anything's wrong, exactly. The bills are paid. The kids turned out great. You still love each other — of course you do.</p>
+      <p>But somewhere between the soccer practices and the school fundraisers and the 2 a.m. fevers, you stopped being you two and became "Mom" and "Dad." And now Mom and Dad are sitting at a table that used to have four chairs filled, and it's quiet, and one of you finally says, "So… what do you want to do this weekend?" and the other one shrugs.</p>
+      <p class="pull">That's the moment. That's the one nobody warns you about.</p>
+      <p>You spent two decades pouring everything into raising those kids — and you'd do it again in a heartbeat. But nobody told you that when they left, they'd take the easy conversation topics with them. Nobody told you that you'd look across the bed at the person you've slept next to for thirty years and feel a little bit like strangers.</p>
+      <p class="emphasis">If that's hitting a nerve right now — good. Keep reading. Because this is exactly what we help with.</p>
+    </div>
+  </section>
+
+  <!-- THE REAL PROBLEM -->
+  <section class="section alt">
+    <div class="section-inner">
+      <p class="section-label">Here's What Most People Get Wrong</p>
+      <h2>The Problem Isn't the Empty Nest. It's That the Lights Came On.</h2>
+      <p>For 20-plus years, your entire relationship had a <em>job</em>. The job was raising humans. And you were good at it — you were a team, you had a mission, you knew exactly what you were doing every single day. The marriage ran in the background while the family ran in the foreground.</p>
+      <p>Then the job ended. The kids walked out the door with their laundry baskets and their futures, and suddenly the background became the foreground. You looked at your marriage in the bright light for the first time in years and went, <em>"Oh. We haven't really tended to this in a while."</em></p>
+      <p>That's not failure. That's just what happens to good people who got busy loving their kids.</p>
+      <p>But here's the part that stings: most couples don't <em>fix</em> this. They just quietly accept it. They become polite. They coexist. They turn into people who love each other but stopped <em>liking</em> being together. They settle for "fine."</p>
+      <p class="pull">"Fine" is the most dangerous word in a 30-year marriage.</p>
+      <p class="emphasis">You don't need saving. You're not broken. You just need to give this relationship a job again — a new one. And that's where we come in.</p>
+    </div>
+  </section>
+
+  <!-- THE SOLUTION -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">Our Approach</p>
+      <h2>We're Not Therapists. We're a Couple Who's Been There.</h2>
+      <p>We're Billy and Maryruth. We're not going to put you on a couch and ask about your childhood. We're a real married couple who hit this exact wall ourselves — and clawed our way to the other side, where we genuinely have more fun, more connection, and (we'll just say it) a better sex life than we did in our 30s. Now we help other couples do the same.</p>
+      <div class="pillars">
+        <div class="pillar">
+          <h3>It Should Feel Like You, Not Like Therapy</h3>
+          <p>We keep it casual, honest, and funny — because real reconnection happens when you're laughing, not when you're filling out worksheets.</p>
+        </div>
+        <div class="pillar">
+          <h3>Both of You Matter</h3>
+          <p>This isn't about fixing the husband or fixing the wife. It's the two of you, as a team, rebuilding something together. Just like you did with the kids — except this time the project is <em>you</em>.</p>
+        </div>
+        <div class="pillar">
+          <h3>Faith and Fun Aren't Opposites</h3>
+          <p>We bring a spiritual foundation to everything we do, without getting preachy. Purpose and passion belong in the same conversation.</p>
+        </div>
+      </div>
+      <p style="margin-top:32px;">We give you the tools, the framework, and the honest conversations you've been avoiding — and we walk through it <em>with</em> you. No fluff. No homework that takes over your life. Just real momentum, starting in the first week.</p>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="section alt">
+    <div class="section-inner">
+      <p class="section-label">What's Included</p>
+      <h2>Everything You Get Inside Reignite</h2>
+      <ul class="included">
+        <li><strong>The Full "Reignite" Framework</strong>Our five-part roadmap for empty nesters, so you always know the next right step instead of guessing. <span class="aside">No more "I don't even know where to start."</span></li>
+        <li><strong>Live Coaching With Us, Together</strong>Real conversations with a real couple who's been there — where you can ask the awkward questions you can't ask anyone else.</li>
+        <li><strong>A Private Community of Couples Like You</strong>Because knowing you're not the only ones feeling this way changes everything. <span class="aside">Turns out half your friends are quietly going through the same thing.</span></li>
+        <li><strong>Weekly Connection Challenges</strong>Small, doable, sometimes hilarious assignments that rebuild intimacy without feeling forced or cheesy.</li>
+        <li><strong>The "Better Sex After 50" Sessions</strong>Honest, shame-free, practical. The conversation nobody else is brave enough to have with you.</li>
+        <li><strong>Date Night &amp; Conversation Toolkits</strong>So you never sit at that quiet dinner table with nothing to say again.</li>
+        <li><strong>Direct Access to Billy &amp; Maryruth</strong>You're not a number in a course. When you're stuck, we're reachable.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- QUOTE + PHOTO -->
+  <section class="section quote-section">
+    <div class="section-inner">
+      <img class="quote-avatar" src="billy-maryruth.jpg" alt="Billy and Maryruth Mitchell">
+      <blockquote>This chapter — the one after the kids leave — can be the best one of your marriage. We mean that.</blockquote>
+      <p class="quote-attr">— Billy &amp; Maryruth Mitchell</p>
+    </div>
+  </section>
+
+  <!-- FOR / NOT FOR -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">Let's Be Honest Up Front</p>
+      <h2>Who This Is For (And Who It's Not)</h2>
+      <div class="fit-grid">
+        <div class="fit-card yes">
+          <h3>This Is For You If…</h3>
+          <ul>
+            <li>You're 50+ (or close) and the kids have left or are about to</li>
+            <li>You love your spouse but feel more like roommates</li>
+            <li>You've got a <em>good</em> marriage that's gotten <em>quiet</em> — and you want it loud again</li>
+            <li>You're willing to laugh at yourselves and do a little honest work</li>
+            <li>You believe this next chapter should be the best one</li>
+          </ul>
+        </div>
+        <div class="fit-card no">
+          <h3>This Is NOT For You If…</h3>
+          <ul>
+            <li>You're in active crisis or facing abuse — you need a licensed therapist, and we'll point you to real help</li>
+            <li>You want someone to "fix" your spouse while you sit back</li>
+            <li>You're looking for a magic pill with zero effort</li>
+            <li>You're not actually willing to show up</li>
+          </ul>
+        </div>
+      </div>
+      <p class="fit-note">We'd rather be honest with you up front than take your money and waste your time. If you're not a fit, no hard feelings — we'll still be cheering for you.</p>
+    </div>
+  </section>
+
+  <!-- TRANSFORMATION -->
+  <section class="section alt">
+    <div class="section-inner">
+      <p class="section-label">The Transformation</p>
+      <h2>Where You Are Now vs. Where You'll Be</h2>
+      <div class="transform-grid">
+        <div class="transform-col before">
+          <h3>Where You Are Now</h3>
+          <ul>
+            <li>Dinners are quiet — conversation rarely gets past logistics and the grandkids</li>
+            <li>Intimacy faded so gradually you're not sure when it stopped</li>
+            <li>You feel like roommates who share a mortgage</li>
+            <li>A low-grade loneliness you'd never admit out loud</li>
+            <li>"This is just what marriage looks like at our age"</li>
+          </ul>
+        </div>
+        <div class="transform-col after">
+          <h3>Where You'll Be</h3>
+          <ul>
+            <li>You're <em>talking</em> again — and you've got more to say than you did at 30</li>
+            <li>The physical spark is back, and it's better because you actually know each other now</li>
+            <li>Plans, adventures, and inside jokes that are just yours again</li>
+            <li>You feel like a couple with a future, not two people winding down</li>
+            <li>You wake up genuinely glad it's the two of you</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:32px;" class="emphasis">That's not a fantasy. That's just what happens when you stop coasting and start <em>choosing</em> each other again. We've watched it happen over and over.</p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">What Couples Are Saying</p>
+      <h2>Real People. Real Reconnection.</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <p class="tlabel">The Skeptic Spouse</p>
+          <p>"I'll be honest — she dragged me into this and I thought it was going to be touchy-feely nonsense. Three months later, we're going on actual dates again and I'm the one planning them. I was wrong, and I've never been happier to be wrong."</p>
+          <p class="testimonial-name">— Dave &amp; Linda, Tennessee</p>
+        </div>
+        <div class="testimonial">
+          <p class="tlabel">The Quiet Marriage</p>
+          <p>"We didn't have a bad marriage. That was the problem — it was just… quiet. Billy and Maryruth were the first people who made us feel like we weren't crazy or alone. For the first time in years, we stayed up talking until midnight."</p>
+          <p class="testimonial-name">— Sandra &amp; Mark, Ohio</p>
+        </div>
+        <div class="testimonial">
+          <p class="tlabel">The Empty Nest Hit Hard</p>
+          <p>"When our youngest moved out, I cried for a week and then realized I didn't know how to just be a wife anymore — I'd been a mom for so long. This gave us a brand-new way to see each other and this whole next stage of life. I actually look forward to the empty house now."</p>
+          <p class="testimonial-name">— Carol &amp; Jim, Colorado</p>
+        </div>
+      </div>
+      <p style="margin-top:24px; font-size:14px; font-style:italic; color:#6a7a70;">Sample stories shown for layout — swap in your real client testimonials anytime.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section alt" id="faq">
+    <div class="section-inner">
+      <p class="section-label">Questions? We've Got You.</p>
+      <h2>Frequently Asked Questions</h2>
+      <div style="margin-top:36px;">
+
+        <div class="faq">
+          <div class="faq-q"><h3>Is this therapy?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">Nope. We're coaches, not clinicians — we won't psychoanalyze you or dig through your childhood. We give you practical tools and walk alongside you. If something comes up that needs a licensed therapist, we'll tell you straight.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><h3>My spouse isn't really into this. Can it still work?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">It can — a lot of our couples start with one excited partner and one skeptic. We're pretty good at winning over the skeptic, mostly because this doesn't feel like the thing they were dreading. But both of you do eventually have to show up. We'll help with that.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><h3>We're not very religious. Is this going to be preachy?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">Not at all. Faith is part of our foundation, but we're not here to convert you or quote scripture at you. Couples of all kinds — and all levels of faith — fit right in here.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><h3>Aren't we a little old for this?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">That's literally who we built this for. This isn't for newlyweds — it's for couples who've got decades together and a whole beautiful chapter still ahead. You're not too old. You're right on time.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><h3>How much time does this take?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">A couple of hours a week. This isn't a second job — it's protecting a little space for the most important relationship you've got. We designed it to fit a real life, not take it over.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><h3>Do we really have to talk about… the sex stuff?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">Only as much as you want to. But we'll be honest — it's one of the things couples are most relieved to finally talk about, in a way that isn't clinical or cringey. No pressure, no shame, just real talk.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><h3>What if it doesn't work for us?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">This works when you actually do the work — that's true of anything worth doing. We pour everything into you; what we can't do is want it more than you do. Show up, lean in, and if it's still not landing, we'll talk it through with you personally.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><h3>How do we get started?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">Grab our free guide first, or book a no-pressure call and we'll figure out if we're a fit together. No countdown timers, no hard sell. Just a conversation between couples.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section final" id="start">
+    <div class="section-inner">
+      <p class="section-label" style="color:var(--gold);">One Small Step</p>
+      <p class="pull-final">Nothing changes if nothing changes.</p>
+      <p>That quiet dinner table will still be quiet next month. And the month after that. The empty nest doesn't fix itself — it just slowly becomes the new normal, and "fine" hardens into "this is just how it is now." We've seen too many good couples let twenty more good years slip by on autopilot.</p>
+      <p class="emphasis" style="color:var(--cream);">You don't have to be one of them.</p>
+      <p>You've already done the hard part — you've stayed. You built a family, you went the distance, you're still here, still together. Now it's time to come back to <em>each other</em>.</p>
+      <h2 style="margin:32px 0 24px;">This Chapter Can Be the Best One Yet.</h2>
+      <div class="btn-row">
+        <a href="#" class="btn-gold">Get the Free Guide →</a>
+        <a href="#" class="btn-outline">Book a No-Pressure Call</a>
+      </div>
+      <p class="signoff">We'd love to walk this one with you.<br>— Billy &amp; Maryruth</p>
+    </div>
+  </section>
+
+  <script>
+    // ==== EASY EDIT: paste your real links here ====
+    var FREE_GUIDE_URL = "#";   // your opt-in / lead magnet form
+    var BOOKING_URL    = "#";   // your Calendly link
+    // ===============================================
+
+    // FAQ accordion
+    document.querySelectorAll('.faq .faq-q').forEach(function (q) {
+      q.addEventListener('click', function () { q.parentNode.classList.toggle('open'); });
+    });
+
+    // Wire CTA buttons
+    document.querySelectorAll('.btn-gold').forEach(function (b) {
+      if (b.textContent.toLowerCase().indexOf('guide') !== -1) b.setAttribute('href', FREE_GUIDE_URL);
+    });
+    document.querySelectorAll('.btn-outline').forEach(function (b) { b.setAttribute('href', BOOKING_URL); });
+  </script>
+
+</body>
+</html>

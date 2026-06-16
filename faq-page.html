@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="logo-emblem.svg">
+  <title>FAQ | Billy & Maryruth Mitchell</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F3EA;
+      --green: #0F2A1E;
+      --gold: #C8A24A;
+      --white: #FFFFFF;
+      --cream-muted: #E8DCC8;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--cream);
+      color: var(--green);
+      line-height: 1.7;
+    }
+    /* NAV */
+    .nav { position: sticky; top: 0; z-index: 100; background: var(--green); border-bottom: 3px solid var(--gold); display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; flex-wrap: wrap; gap: 12px; }
+    .nav-brand { font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); text-decoration: none; }
+    .nav-links { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+    .nav-links a { font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cream); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.active { color: var(--gold); border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+    .nav-links a.nav-cta { background: var(--gold); color: var(--green); padding: 9px 20px; border-radius: 4px; font-weight: 700; }
+    .nav-links a.nav-cta:hover { background: var(--cream); color: var(--green); }
+    @media (max-width: 768px) { .nav { padding: 14px 20px; } .nav-links { gap: 16px; } }
+    .header {
+      background: var(--green);
+      padding: 72px 24px 80px;
+      text-align: center;
+    }
+    .header .eyebrow {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(34px, 5vw, 56px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .header h1 span { color: var(--gold); }
+    .header p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(17px, 2.2vw, 22px);
+      color: var(--cream-muted);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .wrap { max-width: 800px; margin: 0 auto; padding: 72px 24px; }
+    .faq {
+      background: var(--white);
+      border: 2px solid var(--green);
+      border-radius: 8px;
+      margin-bottom: 18px;
+      box-shadow: 5px 5px 0 var(--cream-muted);
+      transition: box-shadow 0.2s;
+      overflow: hidden;
+    }
+    .faq.open { box-shadow: 5px 5px 0 var(--gold); }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 24px 28px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .faq-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--green);
+      background: var(--gold);
+      min-width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .faq-q h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.3;
+      flex: 1;
+    }
+    .faq-toggle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+      line-height: 1;
+    }
+    .faq.open .faq-toggle { transform: rotate(45deg); }
+    .faq-a-wrap {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .faq.open .faq-a-wrap { max-height: 400px; }
+    .faq-a {
+      font-size: 16px;
+      color: #2a4a38;
+      padding: 0 28px 26px 82px;
+    }
+    .divider {
+      text-align: center;
+      padding: 48px 24px 8px;
+    }
+    .divider span {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--green);
+    }
+    .final-cta {
+      background: var(--green);
+      padding: 72px 24px;
+      text-align: center;
+    }
+    .final-cta .eyebrow {
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .final-cta h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .final-cta p {
+      color: var(--cream-muted);
+      font-size: 17px;
+      max-width: 480px;
+      margin: 0 auto 36px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--green);
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 18px 48px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .cta-btn:hover { background: var(--cream); transform: translateY(-2px); }
+    .dan-cta {
+      display: block;
+      width: 100%;
+      background: var(--gold);
+      color: var(--green);
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 28px 32px;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .dan-cta:hover { background: var(--green); color: var(--gold); }
+    @media (max-width: 768px) {
+      .header { padding: 56px 20px 60px; }
+      .wrap { padding: 56px 20px; }
+      .faq { padding: 26px 24px; }
+      .faq-a { padding-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-brand" style="display:flex;align-items:center;gap:10px;"><img src="logo-emblem-light.svg" alt="Empty Nest Marriage" style="height:38px;width:auto;"><span>Empty Nest Marriage</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="my-coaching-page.html">Free Guide</a>
+      <a href="sales-page.html">The Program</a>
+      <a href="reignite-framework.html">The Framework</a>
+      <a href="faq-page.html" class="active">FAQ</a>
+      <a href="my-coaching-page.html" class="nav-cta">Get Started</a>
+    </div>
+  </nav>
+
+  <div class="header">
+    <p class="eyebrow">Questions? We've Got You.</p>
+    <h1>Frequently Asked <span>Questions</span></h1>
+    <p>Real answers, over coffee — no corporate speak, no fine print.</p>
+  </div>
+
+  <div class="wrap">
+
+    <div class="faq">
+      <div class="faq-q"><div class="faq-num">1</div><h2>What exactly do you do?</h2></div>
+      <p class="faq-a">We help couples 50+ rediscover each other after the kids leave home. That means more connection, more fun, more purpose, and yes — better intimacy and better sex. Think of us as your guides for this next chapter — a real couple who's walked this road, helping you remember why you fell for each other in the first place.</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q"><div class="faq-num">2</div><h2>Who is this for?</h2></div>
+      <p class="faq-a">This is for empty nesters (or soon-to-be) who love their spouse but feel more like roommates than partners lately. You've got a good marriage — it's just gotten quiet. You're ready to stop coexisting and start actually enjoying each other again. If you've ever looked across the dinner table and thought "now what?" — you're exactly who we built this for.</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q"><div class="faq-num">3</div><h2>Who is this NOT for?</h2></div>
+      <p class="faq-a">This isn't for couples in active crisis who need a licensed therapist or marriage counselor — we're coaches, not clinicians, and we'll always tell you when something's outside our lane. It's also not for people looking for a magic pill or someone to "fix" their spouse for them. This works when both of you show up willing to do a little honest, sometimes funny, occasionally uncomfortable work together.</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q"><div class="faq-num">4</div><h2>What results can I expect?</h2></div>
+      <p class="faq-a">Most couples feel a shift in the first two weeks — usually it starts with actually talking again, like really talking. Within a couple of months, the couples who lean in tell us they're laughing more, fighting less, and reconnecting physically in ways they thought were behind them. We won't promise you a fairytale, because real relationships aren't one. But we will tell you this chapter can genuinely be the best one yet — we've seen it over and over.</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q"><div class="faq-num">5</div><h2>How is this different from other coaching programs?</h2></div>
+      <p class="faq-a">Most relationship help out there is either cold and clinical, fear-based ("save your marriage before it's too late!"), or aimed at 30-year-olds with toddlers. We're a real married couple coaching real married couples through the exact season we've lived ourselves. We're casual, we're funny, we keep it grounded in faith — and we're not afraid to talk honestly about intimacy and sex when most folks tiptoe around it.</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q"><div class="faq-num">6</div><h2>What's the time commitment?</h2></div>
+      <p class="faq-a">Less than you think. A couple of hours a week — some focused time together, a few small practices we'll give you, and showing up for our sessions. This isn't homework that takes over your life; it's the opposite. It's protecting a little time for the most important relationship you've got.</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q"><div class="faq-num">7</div><h2>How much does it cost?</h2></div>
+      <p class="faq-a">We've got options depending on how much support you want — from a self-paced program you can start today, to our signature group coaching, to private 1:1 work with us. The real question isn't what it costs — it's what staying stuck is already costing you. We'll be upfront about pricing on a quick call, and we'll only recommend the path that actually fits where you are.</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q"><div class="faq-num">8</div><h2>What if it doesn't work for me?</h2></div>
+      <p class="faq-a">Fair question — and here's our honest answer: this works when you actually do the work, and it doesn't when you don't. That's true of anything worth doing. We pour everything into giving you the tools and the support; what we can't do is want it more than you do. But if you show up, lean in, and it still isn't landing, we'll talk it through with you personally — we're not in the business of leaving people stuck.</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q"><div class="faq-num">9</div><h2>How do I get started?</h2></div>
+      <p class="faq-a">Easy. Grab our free guide, "Reignite: 5 Shifts for Empty Nesters" — it'll give you a real taste of how we think and a few things you can try tonight. From there, if you want to go deeper, book a no-pressure call with us and we'll figure out the right next step together. No countdown timers, no hard sell — just a conversation.</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q"><div class="faq-num">10</div><h2>Can I talk to a past client?</h2></div>
+      <p class="faq-a">Absolutely. Nothing we say about ourselves matters as much as what couples who've done this with us have to say. Once we hop on a call, we're happy to connect you with a couple whose story sounds a lot like yours. Real people, real results — go ahead and ask them anything.</p>
+    </div>
+
+  </div>
+
+  <div class="final-cta">
+    <p class="eyebrow">Still Have Questions?</p>
+    <h2>Let's Talk It Through.</h2>
+    <p>Grab the free guide, or book a no-pressure call. This chapter can be your best one yet — we'd love to help you get there.</p>
+    <a href="#" class="cta-btn">Get the Free Guide →</a>
+  </div>
+
+  <script>
+    // ==== EASY EDIT: paste your real links here ====
+    var FREE_GUIDE_URL = "#";        // e.g. your opt-in page / lead magnet form
+    var BOOKING_URL    = "#";        // e.g. your Calendly link
+    // ===============================================
+
+    // Turn each FAQ into a click-to-expand accordion
+    document.querySelectorAll('.faq').forEach(function (faq) {
+      var q = faq.querySelector('.faq-q');
+      var a = faq.querySelector('.faq-a');
+
+      // wrap the answer so we can animate height
+      var wrap = document.createElement('div');
+      wrap.className = 'faq-a-wrap';
+      a.parentNode.insertBefore(wrap, a);
+      wrap.appendChild(a);
+
+      // add the + / x toggle icon
+      var toggle = document.createElement('div');
+      toggle.className = 'faq-toggle';
+      toggle.textContent = '+';
+      q.appendChild(toggle);
+
+      q.addEventListener('click', function () {
+        faq.classList.toggle('open');
+      });
+    });
+
+    // Wire up the CTA buttons
+    document.querySelectorAll('.cta-btn').forEach(function (btn) {
+      btn.setAttribute('href', FREE_GUIDE_URL);
+    });
+  </script>
+
+</body>
+</html>

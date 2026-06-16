@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="logo-emblem.svg">
+  <title>Rediscover Each Other | Billy & Maryruth Mitchell</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F7F3EA;
+      --green: #0F2A1E;
+      --gold: #C8A24A;
+      --white: #FFFFFF;
+      --cream-muted: #E8DCC8;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--cream);
+      color: var(--green);
+      line-height: 1.7;
+    }
+
+    /* HEADER */
+    /* NAV */
+    .nav { position: sticky; top: 0; z-index: 100; background: var(--green); border-bottom: 3px solid var(--gold); display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; flex-wrap: wrap; gap: 12px; }
+    .nav-brand { font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); text-decoration: none; }
+    .nav-links { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+    .nav-links a { font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cream); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.active { color: var(--gold); border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+    .nav-links a.nav-cta { background: var(--gold); color: var(--green); padding: 9px 20px; border-radius: 4px; font-weight: 700; }
+    .nav-links a.nav-cta:hover { background: var(--cream); color: var(--green); }
+    @media (max-width: 768px) { .nav { padding: 14px 20px; } .nav-links { gap: 16px; } }
+
+    /* HERO */
+    .hero {
+      background: var(--green);
+      padding: 80px 24px 90px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(36px, 6vw, 68px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 28px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(18px, 2.5vw, 24px);
+      color: var(--cream-muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--green);
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 18px 48px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .hero-cta:hover { background: var(--cream); transform: translateY(-2px); }
+
+    /* SECTION WRAPPER */
+    .section { padding: 80px 24px; }
+    .section-inner { max-width: 800px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .section p {
+      font-size: 17px;
+      font-weight: 400;
+      color: #2a4a38;
+      margin-bottom: 20px;
+    }
+
+    /* PAIN SECTION */
+    .pain { background: var(--white); border-top: 2px solid var(--green); border-bottom: 2px solid var(--green); }
+
+    .checklist { list-style: none; margin: 28px 0; }
+    .checklist li {
+      font-size: 17px;
+      padding: 12px 0 12px 36px;
+      position: relative;
+      border-bottom: 1px solid var(--cream-muted);
+      color: var(--green);
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* WHAT YOU GET */
+    .gifts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin: 40px 0;
+    }
+    .gift-card {
+      background: var(--white);
+      border: 2px solid var(--green);
+      border-radius: 8px;
+      padding: 32px 24px;
+      box-shadow: 4px 4px 0px var(--green);
+      transition: transform 0.2s ease;
+    }
+    .gift-card:hover { transform: translateY(-3px); }
+    .gift-number {
+      font-family: 'Oswald', sans-serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .gift-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .gift-card p { font-size: 15px; color: #3a5a48; margin: 0; }
+
+    /* QUOTE */
+    .quote-section { background: var(--green); }
+    .quote-section .section-inner { text-align: center; }
+    .quote-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gold);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      margin-bottom: 32px;
+    }
+    blockquote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(22px, 3vw, 32px);
+      color: var(--cream);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      position: relative;
+      padding: 0 20px;
+    }
+    blockquote::before {
+      content: "\201C";
+      font-size: 80px;
+      color: var(--gold);
+      position: absolute;
+      top: -20px;
+      left: -10px;
+      line-height: 1;
+      font-style: normal;
+    }
+    .quote-attr {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .testimonial {
+      background: var(--white);
+      border: 2px solid var(--green);
+      border-radius: 8px;
+      padding: 28px;
+      box-shadow: 3px 3px 0 var(--cream-muted);
+    }
+    .testimonial p {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+    .testimonial-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* OPT-IN FORM */
+    .optin { background: var(--cream); }
+    .optin-box {
+      background: var(--green);
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      padding: 56px 48px;
+      text-align: center;
+      box-shadow: 6px 6px 0 var(--gold);
+    }
+    .optin-box h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+    .optin-box p {
+      color: var(--cream-muted);
+      font-size: 17px;
+      margin-bottom: 36px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .form-row {
+      display: flex;
+      gap: 12px;
+      max-width: 520px;
+      margin: 0 auto 16px;
+      flex-wrap: wrap;
+    }
+    .form-row input {
+      flex: 1;
+      min-width: 200px;
+      padding: 16px 20px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      border: 2px solid var(--cream-muted);
+      background: var(--cream);
+      color: var(--green);
+      outline: none;
+    }
+    .form-row input:focus { border-color: var(--gold); }
+    .form-row input::placeholder { color: #7a9a88; }
+    .optin-btn {
+      width: 100%;
+      max-width: 520px;
+      background: var(--gold);
+      color: var(--green);
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 18px 32px;
+      border: none;
+      cursor: pointer;
+      display: block;
+      margin: 0 auto;
+      transition: all 0.2s;
+    }
+    .optin-btn:hover { background: var(--cream); }
+    .optin-fine {
+      font-size: 13px;
+      color: var(--cream-muted);
+      margin-top: 16px;
+      opacity: 0.7;
+    }
+
+    /* ABOUT */
+    .about { background: var(--white); border-top: 2px solid var(--green); border-bottom: 2px solid var(--green); }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .about-photo {
+      background: var(--cream);
+      border: 2px solid var(--green);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 5px 5px 0 var(--gold);
+      line-height: 0;
+    }
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* PRICING */
+    .pricing { background: var(--cream); }
+    .pricing .section-inner { text-align: center; }
+    .pricing > .section-inner > h2, .pricing > .section-inner > .section-label { text-align: center; }
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      margin-top: 48px;
+      text-align: left;
+    }
+    .tier {
+      background: var(--white);
+      border: 2px solid var(--green);
+      border-radius: 8px;
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 5px 5px 0 var(--cream-muted);
+      transition: transform 0.2s;
+    }
+    .tier:hover { transform: translateY(-4px); }
+    .tier.featured {
+      background: var(--green);
+      box-shadow: 6px 6px 0 var(--gold);
+      position: relative;
+    }
+    .tier.featured .tier-name,
+    .tier.featured .tier-desc,
+    .tier.featured .tier-features li { color: var(--cream); }
+    .tier.featured .tier-price { color: var(--gold); }
+    .tier-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--green);
+      font-family: 'Oswald', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .tier-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .tier-desc { font-size: 14px; color: #3a5a48; margin-bottom: 24px; min-height: 42px; }
+    .tier-price {
+      font-family: 'Oswald', sans-serif;
+      font-size: 44px;
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .tier-price span { font-size: 16px; font-weight: 400; }
+    .tier-price-note {
+      font-size: 13px;
+      color: var(--gold);
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .tier-features { list-style: none; margin-bottom: 32px; flex: 1; }
+    .tier-features li {
+      font-size: 15px;
+      padding: 10px 0 10px 28px;
+      position: relative;
+      color: var(--green);
+      border-bottom: 1px solid var(--cream-muted);
+    }
+    .tier.featured .tier-features li { border-bottom: 1px solid #1e4030; }
+    .tier-features li:last-child { border-bottom: none; }
+    .tier-features li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .tier-btn {
+      display: block;
+      text-align: center;
+      background: var(--gold);
+      color: var(--green);
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 16px 24px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .tier-btn:hover { background: var(--green); color: var(--gold); border: none; }
+    .tier.featured .tier-btn:hover { background: var(--cream); color: var(--green); }
+    .pricing-fine { font-size: 14px; color: #3a5a48; margin-top: 36px; font-style: italic; }
+
+    /* FAQ ACCORDION */
+    .faq-section { background: var(--white); border-top: 2px solid var(--green); border-bottom: 2px solid var(--green); }
+    .faq-section .section-inner { text-align: center; }
+    .faq-list { margin-top: 44px; text-align: left; }
+    .faq {
+      background: var(--cream);
+      border: 2px solid var(--green);
+      border-radius: 8px;
+      margin-bottom: 16px;
+      box-shadow: 4px 4px 0 var(--cream-muted);
+      transition: box-shadow 0.2s;
+      overflow: hidden;
+    }
+    .faq.open { box-shadow: 4px 4px 0 var(--gold); }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 22px 26px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .faq-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--green);
+      background: var(--gold);
+      min-width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+    .faq-q h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.3;
+      flex: 1;
+      color: var(--green);
+    }
+    .faq-toggle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 26px;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+      line-height: 1;
+    }
+    .faq.open .faq-toggle { transform: rotate(45deg); }
+    .faq-a-wrap { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq.open .faq-a-wrap { max-height: 400px; }
+    .faq-a {
+      font-size: 15px;
+      color: #2a4a38;
+      padding: 0 26px 24px 76px;
+    }
+    @media (max-width: 768px) {
+      .faq-a { padding: 0 22px 22px 22px; }
+    }
+
+    /* DAN CTA FOOTER */
+    .dan-cta {
+      display: block;
+      width: 100%;
+      background: var(--gold);
+      color: var(--green);
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 28px 32px;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .dan-cta:hover { background: var(--green); color: var(--gold); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { padding: 60px 20px 70px; }
+      .section { padding: 56px 20px; }
+      .optin-box { padding: 40px 24px; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-photo { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-brand" style="display:flex;align-items:center;gap:10px;"><img src="logo-emblem-light.svg" alt="Empty Nest Marriage" style="height:38px;width:auto;"><span>Empty Nest Marriage</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="my-coaching-page.html" class="active">Free Guide</a>
+      <a href="sales-page.html">The Program</a>
+      <a href="reignite-framework.html">The Framework</a>
+      <a href="faq-page.html">FAQ</a>
+      <a href="#optin" class="nav-cta">Get Started</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Free Guide for Couples 50+</p>
+    <h1>The Kids Are Gone.<br><span>Now What?</span></h1>
+    <p class="hero-sub">Grab our free guide and discover how to rediscover each other — more intimacy, more fun, and yes, better sex.</p>
+    <a href="#optin" class="hero-cta">Get the Free Guide →</a>
+  </section>
+
+  <!-- PAIN SECTION -->
+  <section class="section pain">
+    <div class="section-inner">
+      <p class="section-label">Does This Sound Familiar?</p>
+      <h2>You Love Each Other.<br>But Something Feels... Off.</h2>
+      <p>The kids left. The house is quiet. And you looked at each other and realized you'd spent the last 20 years being Mom and Dad — and kind of forgot how to just be <em>you</em>.</p>
+      <p>You're not broken. You're not headed for divorce. You're just in a season that nobody prepares you for.</p>
+      <ul class="checklist">
+        <li>You have nothing to talk about that isn't the kids, the house, or logistics</li>
+        <li>The intimacy — emotional and physical — has quietly faded</li>
+        <li>You feel more like roommates than partners</li>
+        <li>You love them, but you miss feeling <em>in love</em> with them</li>
+        <li>You know something needs to change, but you don't know where to start</li>
+      </ul>
+      <p style="font-weight:600;">That's exactly why we created this guide.</p>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">What's Inside</p>
+      <h2>Your Free Guide:<br>"Reignite: 5 Shifts for Empty Nesters"</h2>
+      <p>This isn't a fluffy PDF with generic relationship advice. This is the exact framework we use with couples in our coaching program — the real stuff that actually works for people in your season of life.</p>
+      <div class="gifts-grid">
+        <div class="gift-card">
+          <div class="gift-number">01</div>
+          <h3>The Conversation Starter</h3>
+          <p>A dead-simple framework for finding things to talk about that aren't the kids. (It works the first night.)</p>
+        </div>
+        <div class="gift-card">
+          <div class="gift-number">02</div>
+          <h3>The Intimacy Reset</h3>
+          <p>Why physical closeness disappeared — and the 3-minute daily habit that brings it back.</p>
+        </div>
+        <div class="gift-card">
+          <div class="gift-number">03</div>
+          <h3>The Identity Shift</h3>
+          <p>How to rediscover who you are as a couple now — not who you were at 30 with three kids at home.</p>
+        </div>
+        <div class="gift-card">
+          <div class="gift-number">04</div>
+          <h3>The Fun Factor</h3>
+          <p>When did you stop having fun together? Here's how to get it back without it feeling forced.</p>
+        </div>
+        <div class="gift-card">
+          <div class="gift-number">05</div>
+          <h3>The Purpose Map</h3>
+          <p>This chapter is the one people tell us changed everything. Your "why" as a couple in this new season.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="section quote-section">
+    <div class="section-inner">
+      <img class="quote-avatar" src="billy-maryruth.jpg" alt="Billy and Maryruth Mitchell">
+      <blockquote>This chapter — the one after the kids leave — can be the best one of your marriage. We mean that.</blockquote>
+      <p class="quote-attr">— Billy &amp; Maryruth Mitchell</p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">What Couples Are Saying</p>
+      <h2>Real People. Real Reconnection.</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <p>"We'd been married 27 years and I honestly thought we'd just… coexist until retirement. Billy and Maryruth's approach is different — funny, real, no therapy-speak. We're dating again."</p>
+          <p class="testimonial-name">— Carol & Jim T., Colorado</p>
+        </div>
+        <div class="testimonial">
+          <p>"I was the skeptic. My wife dragged me into it. Three months later I'm the one telling our friends about it. This stuff works."</p>
+          <p class="testimonial-name">— Dave R., Tennessee</p>
+        </div>
+        <div class="testimonial">
+          <p>"We didn't have a bad marriage. We had a quiet one. That's what made it hard to talk about. The guide was the first thing that made us feel seen."</p>
+          <p class="testimonial-name">— Sandra & Mark W., Ohio</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section pricing">
+    <div class="section-inner">
+      <p class="section-label">Work With Us</p>
+      <h2>Ways to Rediscover<br>Each Other</h2>
+      <p style="max-width:560px; margin:0 auto;">Whether you want to start on your own or go all-in with us by your side, there's a path for you. Every option is built for couples 50+ ready to rebuild.</p>
+      <div class="tier-grid">
+
+        <!-- TIER 1 -->
+        <div class="tier">
+          <div class="tier-name">The Spark</div>
+          <p class="tier-desc">A self-paced start for couples who want to dip a toe back in.</p>
+          <div class="tier-price">$197</div>
+          <div class="tier-price-note">One-Time</div>
+          <ul class="tier-features">
+            <li>The full "Reignite" digital course</li>
+            <li>5 guided video sessions</li>
+            <li>Date night &amp; conversation toolkits</li>
+            <li>Lifetime access — go at your pace</li>
+          </ul>
+          <a href="#optin" class="tier-btn">Get Started →</a>
+        </div>
+
+        <!-- TIER 2 (FEATURED) -->
+        <div class="tier featured">
+          <div class="tier-badge">Most Popular</div>
+          <div class="tier-name">The Reignite</div>
+          <p class="tier-desc">Our signature program — guided coaching with us, together.</p>
+          <div class="tier-price">$997</div>
+          <div class="tier-price-note">8-Week Program</div>
+          <ul class="tier-features">
+            <li>Everything in The Spark</li>
+            <li>8 weeks of live group coaching</li>
+            <li>Private community of couples like you</li>
+            <li>Weekly intimacy &amp; connection challenges</li>
+            <li>Direct access to Billy &amp; Maryruth</li>
+          </ul>
+          <a href="#optin" class="tier-btn">Apply Now →</a>
+        </div>
+
+        <!-- TIER 3 -->
+        <div class="tier">
+          <div class="tier-name">The Private</div>
+          <p class="tier-desc">1:1 coaching for couples who want our full attention.</p>
+          <div class="tier-price">$2,500<span></span></div>
+          <div class="tier-price-note">Private Package</div>
+          <ul class="tier-features">
+            <li>Everything in The Reignite</li>
+            <li>Private 1:1 coaching sessions</li>
+            <li>Personalized reconnection roadmap</li>
+            <li>On-call support between sessions</li>
+            <li>Limited spots each season</li>
+          </ul>
+          <a href="#optin" class="tier-btn">Book a Call →</a>
+        </div>
+
+      </div>
+      <p class="pricing-fine">Not sure which is right for you? Grab the free guide first — no pressure, no countdown timers, no nonsense.</p>
+    </div>
+  </section>
+
+  <!-- OPT-IN -->
+  <section class="section optin" id="optin">
+    <div class="section-inner">
+      <div class="optin-box">
+        <!-- FORM (shown first) -->
+        <form id="guide-form" name="guide-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="thank-you.html">
+          <input type="hidden" name="form-name" value="guide-signup">
+          <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+          <h2>Get Your Free Guide Now</h2>
+          <p>Enter your name and email below and we'll send "Reignite: 5 Shifts for Empty Nesters" right to you — free, forever yours.</p>
+          <div class="form-row">
+            <input type="text" id="gf-name" name="name" placeholder="Your first name" required>
+            <input type="email" id="gf-email" name="email" placeholder="Your best email" required>
+          </div>
+          <button type="submit" class="optin-btn">Send Me the Free Guide →</button>
+          <p class="optin-fine">No spam. No nonsense. Just the good stuff. Unsubscribe anytime.</p>
+        </form>
+        <!-- THANK YOU (shown after submit) -->
+        <div id="guide-thanks" style="display:none;">
+          <h2>Check It Out — It's Yours!</h2>
+          <p id="gf-thanks-line">Thanks! Your copy of "Reignite: 5 Shifts for Empty Nesters" is ready right now.</p>
+          <a href="reignite-guide.pdf" class="optin-btn" style="text-decoration:none; display:inline-block;" download>Download the Guide (PDF) →</a>
+          <p class="optin-fine">Prefer to read it online? <a href="reignite-guide.html" style="color:var(--gold);">Open the web version →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about">
+    <div class="section-inner">
+      <div class="about-inner">
+        <div class="about-photo">
+          <img src="billy-maryruth.jpg" alt="Billy and Maryruth Mitchell">
+        </div>
+        <div>
+          <p class="section-label">About Us</p>
+          <h2>We've Been Where You Are.</h2>
+          <p>We're Billy and Maryruth Mitchell — a real couple who coaches real couples. We know this season because we've lived it. And we know what it takes to come out the other side closer, more in love, and honestly having more fun than you did in your 30s.</p>
+          <p>Our approach isn't clinical. It's not stuffy. And it's definitely not therapy. It's real talk with a little humor and a lot of heart — grounded in faith and built for couples like you.</p>
+          <p style="font-weight:600;">We help empty nesters rediscover their purpose, passion, and each other. Leading to greater intimacy, fun, and better sex.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section" id="faq">
+    <div class="section-inner">
+      <p class="section-label">Questions? We've Got You.</p>
+      <h2>Frequently Asked Questions</h2>
+      <p style="max-width:540px; margin:0 auto;">Real answers, over coffee — no corporate speak, no fine print. Tap any question.</p>
+      <div class="faq-list">
+
+        <div class="faq">
+          <div class="faq-q"><div class="faq-num">1</div><h3>What exactly do you do?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">We help couples 50+ rediscover each other after the kids leave home. That means more connection, more fun, more purpose, and yes — better intimacy and better sex. Think of us as your guides for this next chapter — a real couple who's walked this road, helping you remember why you fell for each other in the first place.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><div class="faq-num">2</div><h3>Who is this for?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">This is for empty nesters (or soon-to-be) who love their spouse but feel more like roommates than partners lately. You've got a good marriage — it's just gotten quiet. You're ready to stop coexisting and start actually enjoying each other again. If you've ever looked across the dinner table and thought "now what?" — you're exactly who we built this for.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><div class="faq-num">3</div><h3>Who is this NOT for?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">This isn't for couples in active crisis who need a licensed therapist or marriage counselor — we're coaches, not clinicians, and we'll always tell you when something's outside our lane. It's also not for people looking for a magic pill or someone to "fix" their spouse for them. This works when both of you show up willing to do a little honest, sometimes funny, occasionally uncomfortable work together.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><div class="faq-num">4</div><h3>What results can I expect?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">Most couples feel a shift in the first two weeks — usually it starts with actually talking again, like really talking. Within a couple of months, the couples who lean in tell us they're laughing more, fighting less, and reconnecting physically in ways they thought were behind them. We won't promise you a fairytale, because real relationships aren't one. But we will tell you this chapter can genuinely be the best one yet — we've seen it over and over.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><div class="faq-num">5</div><h3>How is this different from other programs?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">Most relationship help out there is either cold and clinical, fear-based ("save your marriage before it's too late!"), or aimed at 30-year-olds with toddlers. We're a real married couple coaching real married couples through the exact season we've lived ourselves. We're casual, we're funny, we keep it grounded in faith — and we're not afraid to talk honestly about intimacy and sex when most folks tiptoe around it.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><div class="faq-num">6</div><h3>What's the time commitment?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">Less than you think. A couple of hours a week — some focused time together, a few small practices we'll give you, and showing up for our sessions. This isn't homework that takes over your life; it's the opposite. It's protecting a little time for the most important relationship you've got.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><div class="faq-num">7</div><h3>How much does it cost?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">We've got options depending on how much support you want — from a self-paced program you can start today, to our signature group coaching, to private 1:1 work with us. The real question isn't what it costs — it's what staying stuck is already costing you. We'll be upfront about pricing on a quick call, and we'll only recommend the path that actually fits where you are.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><div class="faq-num">8</div><h3>What if it doesn't work for me?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">Fair question — and here's our honest answer: this works when you actually do the work, and it doesn't when you don't. That's true of anything worth doing. We pour everything into giving you the tools and the support; what we can't do is want it more than you do. But if you show up, lean in, and it still isn't landing, we'll talk it through with you personally — we're not in the business of leaving people stuck.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><div class="faq-num">9</div><h3>How do I get started?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">Easy. Grab our free guide, "Reignite: 5 Shifts for Empty Nesters" — it'll give you a real taste of how we think and a few things you can try tonight. From there, if you want to go deeper, book a no-pressure call with us and we'll figure out the right next step together. No countdown timers, no hard sell — just a conversation.</p></div>
+        </div>
+
+        <div class="faq">
+          <div class="faq-q"><div class="faq-num">10</div><h3>Can I talk to a past client?</h3><div class="faq-toggle">+</div></div>
+          <div class="faq-a-wrap"><p class="faq-a">Absolutely. Nothing we say about ourselves matters as much as what couples who've done this with us have to say. Once we hop on a call, we're happy to connect you with a couple whose story sounds a lot like yours. Real people, real results — go ahead and ask them anything.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA SECTION -->
+  <section class="section" style="background: var(--green); text-align:center;">
+    <div class="section-inner">
+      <p class="section-label" style="color:var(--gold);">Ready?</p>
+      <h2 style="color:var(--cream); margin-bottom:20px;">This Chapter Can Be<br>Your Best One Yet.</h2>
+      <p style="color:var(--cream-muted); margin-bottom:36px; max-width:480px; margin-left:auto; margin-right:auto;">Grab the free guide and take the first step toward the relationship you actually want.</p>
+      <a href="#optin" class="hero-cta">Get the Free Guide →</a>
+    </div>
+  </section>
+
+  <script>
+    // ==== EASY EDIT: paste your real links here ====
+    var BOOKING_URL = "#optin";   // e.g. your Calendly link — used by "Book a Call" & "Apply Now"
+    // (The "Get the Free Guide" buttons already scroll to the opt-in form on this page.)
+    // ===============================================
+
+    // FAQ accordion: tap a question to expand
+    document.querySelectorAll('.faq .faq-q').forEach(function (q) {
+      q.addEventListener('click', function () {
+        q.parentNode.classList.toggle('open');
+      });
+    });
+
+    // Opt-in form: capture name/email, then deliver the guide
+    var guideForm = document.getElementById('guide-form');
+    if (guideForm) {
+      guideForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = (document.getElementById('gf-name').value || '').trim();
+        var email = (document.getElementById('gf-email').value || '').trim();
+
+        // Save the lead locally so you don't lose it before connecting a real email tool.
+        // (When you add Mailchimp/ConvertKit/etc., point this form there instead.)
+        try {
+          var leads = JSON.parse(localStorage.getItem('reignite_leads') || '[]');
+          leads.push({ name: name, email: email, date: new Date().toISOString() });
+          localStorage.setItem('reignite_leads', JSON.stringify(leads));
+        } catch (err) { /* ignore storage errors */ }
+
+        // 1) Capture the lead in Netlify Forms  2) Send the guide via Postmark  3) Go to thank-you page
+        var body = new URLSearchParams(new FormData(guideForm)).toString();
+        var go = function () { window.location.href = 'thank-you.html?name=' + encodeURIComponent(name); };
+        var opts = { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body };
+        Promise.allSettled([
+          fetch('/', opts),                                   // Netlify Forms (lead record)
+          fetch('/.netlify/functions/subscribe', opts)        // Postmark (sends the guide)
+        ]).then(go, go);
+      });
+    }
+
+    // Wire the "Book a Call" / "Apply Now" tier buttons to your booking link
+    document.querySelectorAll('.tier-btn').forEach(function (btn) {
+      var label = btn.textContent.toLowerCase();
+      if (label.indexOf('book') !== -1 || label.indexOf('apply') !== -1) {
+        btn.setAttribute('href', BOOKING_URL);
+      }
+    });
+  </script>
+
+</body>
+</html>

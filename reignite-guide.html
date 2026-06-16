@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="logo-emblem.svg">
+  <title>Reignite: 5 Shifts for Empty Nesters | Free Guide</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --cream:#F7F3EA; --green:#0F2A1E; --gold:#C8A24A; --white:#FFFFFF; --cream-muted:#E8DCC8; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--green); line-height: 1.7; }
+
+    /* NAV */
+    .nav { position: sticky; top: 0; z-index: 100; background: var(--green); border-bottom: 3px solid var(--gold); display: flex; align-items: center; justify-content: space-between; padding: 16px 32px; flex-wrap: wrap; gap: 12px; }
+    .nav-brand { font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); text-decoration: none; }
+    .nav-links { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+    .nav-links a { font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cream); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.nav-cta { background: var(--gold); color: var(--green); padding: 9px 20px; border-radius: 4px; font-weight: 700; }
+    .nav-links a.nav-cta:hover { background: var(--cream); color: var(--green); }
+    @media (max-width: 768px) { .nav { padding: 14px 20px; } .nav-links { gap: 16px; } }
+
+    /* HERO */
+    .hero { background: var(--green); padding: 80px 24px 86px; text-align: center; }
+    .hero-eyebrow { font-family: 'Oswald', sans-serif; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; }
+    .hero h1 { font-family: 'Oswald', sans-serif; font-size: clamp(36px, 6vw, 62px); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--cream); line-height: 1.1; margin-bottom: 24px; max-width: 800px; margin:0 auto 24px; }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(18px, 2.5vw, 24px); color: var(--cream-muted); max-width: 600px; margin: 0 auto 36px; }
+    .btn-gold { display: inline-block; background: var(--gold); color: var(--green); font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 16px 44px; text-decoration: none; transition: all .2s; }
+    .btn-gold:hover { background: var(--cream); transform: translateY(-2px); }
+
+    .section { padding: 72px 24px; }
+    .inner { max-width: 760px; margin: 0 auto; }
+    .label { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    h2 { font-family: 'Oswald', sans-serif; font-size: clamp(26px, 4vw, 40px); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; line-height: 1.15; margin-bottom: 22px; }
+    p { font-size: 17px; color: #2a4a38; margin-bottom: 18px; }
+    p:last-child { margin-bottom: 0; }
+    .emphasis { font-weight: 600; color: var(--green); }
+
+    .welcome { text-align: center; }
+    .welcome .inner { max-width: 700px; }
+    .welcome-photo { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid var(--gold); box-shadow: 0 6px 18px rgba(0,0,0,0.15); margin-bottom: 28px; }
+
+    /* SHIFT */
+    .shifts { background: var(--white); border-top: 2px solid var(--green); border-bottom: 2px solid var(--green); }
+    .shift { max-width: 760px; margin: 0 auto 26px; background: var(--cream); border: 2px solid var(--green); border-radius: 10px; padding: 40px 38px; box-shadow: 6px 6px 0 var(--cream-muted); }
+    .shift:last-child { margin-bottom: 0; }
+    .shift-head { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 18px; }
+    .shift-num { font-family: 'Oswald', sans-serif; font-size: 24px; font-weight: 700; color: var(--green); background: var(--gold); min-width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .shift-titles .stage { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .shift-titles h3 { font-family: 'Oswald', sans-serif; font-size: clamp(21px, 3vw, 28px); text-transform: uppercase; letter-spacing: 1px; line-height: 1.15; color: var(--green); }
+    .shift-tag { font-family: 'Playfair Display', serif; font-style: italic; font-size: 19px; color: #3a5a48; margin-bottom: 20px; }
+    .shift p { font-size: 16px; }
+    .try { background: var(--green); border-radius: 8px; padding: 22px 24px; margin-top: 22px; }
+    .try .try-label { font-family: 'Oswald', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .try p { color: var(--cream); font-size: 15px; margin: 0; }
+
+    /* CLOSING CTA */
+    .closing { background: var(--green); text-align: center; }
+    .closing .label { color: var(--gold); }
+    .closing h2 { color: var(--cream); }
+    .closing p { color: var(--cream-muted); }
+    .closing .signoff { font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: var(--cream); margin-top: 28px; }
+
+    .dan-cta { display: block; width: 100%; background: var(--gold); color: var(--green); font-family: 'Oswald', sans-serif; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: 28px 32px; text-align: center; text-decoration: none; transition: background .2s; }
+    .dan-cta:hover { background: var(--green); color: var(--gold); }
+    .footer { background: var(--green); color: var(--cream-muted); text-align: center; padding: 36px 24px; border-top: 3px solid var(--gold); }
+    .footer .fbrand { font-family: 'Oswald', sans-serif; font-size: 16px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+
+    @media (max-width: 768px) { .hero { padding: 58px 20px 64px; } .section { padding: 52px 20px; } .shift { padding: 30px 24px; } }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-brand" style="display:flex;align-items:center;gap:10px;"><img src="logo-emblem-light.svg" alt="Empty Nest Marriage" style="height:38px;width:auto;"><span>Empty Nest Marriage</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="my-coaching-page.html">Free Guide</a>
+      <a href="sales-page.html">The Program</a>
+      <a href="reignite-framework.html">The Framework</a>
+      <a href="faq-page.html">FAQ</a>
+      <a href="reignite-guide.pdf" class="nav-cta">Download PDF</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Your Free Guide</p>
+    <h1>Reignite: <span>5 Shifts for Empty Nesters</span></h1>
+    <p class="hero-sub">The simple roadmap for couples 50+ to go from quiet roommates back to genuinely crazy about each other.</p>
+    <a href="reignite-guide.pdf" class="btn-gold">Download the PDF →</a>
+  </section>
+
+  <!-- WELCOME -->
+  <section class="section welcome">
+    <div class="inner">
+      <img class="welcome-photo" src="billy-maryruth.jpg" alt="Billy and Maryruth Mitchell">
+      <p class="label">A Quick Hello</p>
+      <h2>From Our Marriage to Yours</h2>
+      <p>Hey — we're Billy and Maryruth. If you're reading this, the kids have probably left (or they're about to), the house got quiet, and somewhere in there you realized you and your spouse had drifted further apart than you meant to.</p>
+      <p>First thing we want you to hear: <span class="emphasis">you're not broken, and you're not alone.</span> This happens to good couples who spent decades pouring everything into their kids. Nobody warned you the easy part was about to end.</p>
+      <p>We've lived this exact season — and clawed our way to the other side, where we genuinely have more fun, more connection, and a better marriage than we did in our 30s. These five shifts are how. Take them one at a time. You've got this.</p>
+    </div>
+  </section>
+
+  <!-- SHIFTS -->
+  <section class="section shifts">
+
+    <div class="shift">
+      <div class="shift-head"><div class="shift-num">1</div><div class="shift-titles"><p class="stage">Shift One — Reconnect</p><h3>The Conversation Starter</h3></div></div>
+      <p class="shift-tag">"We have nothing to talk about anymore."</p>
+      <p>When the kids leave, they take the easy topics with them. Dinner becomes logistics and silence. The fix isn't talking <em>more</em> — it's talking <em>different</em>. Stop trading status updates ("did you call the plumber?") and start asking real questions again.</p>
+      <p>Here's the secret: you don't actually know everything about your spouse. Thirty years in, they've changed — they have new dreams, new fears, new opinions you've never heard. Get curious about the person they are <em>today</em>, not the one you married.</p>
+      <div class="try"><div class="try-label">Try this tonight</div><p>At dinner, ask: <em>"If we could do anything together in the next five years — money aside — what would you want it to be?"</em> Then just listen. No fixing, no logistics. Watch where it goes.</p></div>
+    </div>
+
+    <div class="shift">
+      <div class="shift-head"><div class="shift-num">2</div><div class="shift-titles"><p class="stage">Shift Two — Rekindle</p><h3>The Intimacy Reset</h3></div></div>
+      <p class="shift-tag">"When did we stop reaching for each other?"</p>
+      <p>Physical closeness rarely ends in a dramatic moment — it fades so slowly you can't name the day it stopped. The good news: it comes back the same way it left. Gradually, gently, on purpose. You don't start with the bedroom. You start with <em>touch</em>.</p>
+      <p>Non-sexual affection is the on-ramp: a hand on the back, a real hug, holding hands on the couch. It rebuilds the safety and warmth that everything else grows from. No pressure, no performance — just reconnecting with the person you love.</p>
+      <div class="try"><div class="try-label">Try this this week</div><p>The 3-minute habit: every day, share one real hug — not the quick pat, the full 20-second kind — and hold hands for a few minutes in the evening. That's it. Watch how much it shifts in seven days.</p></div>
+    </div>
+
+    <div class="shift">
+      <div class="shift-head"><div class="shift-num">3</div><div class="shift-titles"><p class="stage">Shift Three — Rediscover</p><h3>The Identity Shift</h3></div></div>
+      <p class="shift-tag">"I don't know how to just be a husband or wife anymore."</p>
+      <p>For twenty-plus years, you were Mom and Dad. That role was your whole identity — and it walked out the door with the kids. That hollow, untethered feeling? Totally normal. This shift is about rediscovering who you are now, as individuals <em>and</em> as a couple.</p>
+      <p>Here's the reframe: this isn't a loss, it's a return. You get to be a person again — not just a parent. And so does your spouse. The most exciting part of this chapter is getting to meet the people you've each quietly become.</p>
+      <div class="try"><div class="try-label">Try this together</div><p>Each of you finishes this sentence on paper, then trade: <em>"Something I've always wanted to try but never had time for as a parent is ______."</em> No judgment. Just possibility.</p></div>
+    </div>
+
+    <div class="shift">
+      <div class="shift-head"><div class="shift-num">4</div><div class="shift-titles"><p class="stage">Shift Four — Replay</p><h3>The Fun Factor</h3></div></div>
+      <p class="shift-tag">"When did we stop having fun together?"</p>
+      <p>Somewhere along the way, "fun" became something you scheduled for the kids. Date night turned into the same dinner, same couch, same show. But here's the thing — couples who laugh together, last together. Play isn't a luxury in a marriage; it's the glue.</p>
+      <p>And you've finally got the one thing you've been short on for two decades: <em>time and freedom.</em> This is the season to actually use it. New adventures, new inside jokes, a little spontaneity. It doesn't have to be expensive or elaborate. It just has to be <em>yours.</em></p>
+      <div class="try"><div class="try-label">Try this this month</div><p>Take turns planning one "surprise" mini-date the other knows nothing about — a drive somewhere new, a class, a do-over of your very first date. Small budget, big effort. Then swap.</p></div>
+    </div>
+
+    <div class="shift">
+      <div class="shift-head"><div class="shift-num">5</div><div class="shift-titles"><p class="stage">Shift Five — Repurpose</p><h3>The Purpose Map</h3></div></div>
+      <p class="shift-tag">"What's our 'why' now that the kids are grown?"</p>
+      <p>This is the one couples tell us changed everything. Raising your kids gave your marriage a mission — a shared, all-consuming purpose. When they left, that purpose left too, and a marriage without a shared "why" tends to drift.</p>
+      <p>So you choose a new one. Together. Maybe it's serving your community, deepening your faith, building something, traveling with intention, or pouring into your grandkids on purpose. A shared mission is what turns "reconnected" into "unbreakable." It points the spark at something bigger than yourselves.</p>
+      <div class="try"><div class="try-label">Try this soon</div><p>Set aside an hour, grab coffee, and ask each other: <em>"What do we want these next 20 years to be FOR?"</em> Don't solve it in one sitting. Just start the conversation. It's the most important one you'll have.</p></div>
+    </div>
+
+  </section>
+
+  <!-- CLOSING -->
+  <section class="section closing">
+    <div class="inner">
+      <p class="label">What's Next</p>
+      <h2>This Is Just the Beginning.</h2>
+      <p>These five shifts can genuinely change the temperature of your marriage — start with even one and you'll feel it. But reading about it and <em>living</em> it are two different things, and most couples do better with a little support and someone in their corner.</p>
+      <p>That's exactly what we do. Our <strong style="color:var(--cream);">Reignite program</strong> walks you and your spouse through all five shifts, together, with us beside you the whole way — plus a community of couples in the very same season.</p>
+      <p class="emphasis" style="color:var(--cream);">This chapter can be the best one of your marriage. We mean that with our whole hearts.</p>
+      <p style="margin-top:28px;"><a href="sales-page.html" class="btn-gold">See How the Program Works →</a></p>
+      <p class="signoff">Rooting for you both,<br>— Billy &amp; Maryruth</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="fbrand">Billy &amp; Maryruth Mitchell</div>
+    <div>Couples Coaching for Empty Nesters</div>
+    <div style="color:var(--gold); font-family:'Oswald',sans-serif; letter-spacing:2px; text-transform:uppercase; font-size:14px; margin-top:6px;">EmptyNestMarriage.com</div>
+  </footer>
+
+</body>
+</html>
