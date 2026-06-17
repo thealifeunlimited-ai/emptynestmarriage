@@ -5,23 +5,27 @@
 //   POSTMARK_TOKEN  = your Postmark Server API Token
 //   FROM_EMAIL      = hello@emptynestmarriage.com   (optional; defaults below)
 
-import { getStore } from "@netlify/blobs";
-
 export async function handler(event) {
   if (event.httpMethod !== "POST") {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
   try {
+    // Netlify sometimes base64-encodes the request body — decode it first.
+    let rawBody = event.body || "";
+    if (event.isBase64Encoded) {
+      rawBody = Buffer.from(rawBody, "base64").toString("utf8");
+    }
+
     // Form data can arrive URL-encoded or as JSON
     let name = "", email = "";
     const ct = (event.headers["content-type"] || "").toLowerCase();
     if (ct.includes("application/json")) {
-      const j = JSON.parse(event.body || "{}");
+      const j = JSON.parse(rawBody || "{}");
       name = (j.name || "").trim();
       email = (j.email || "").trim();
     } else {
-      const p = new URLSearchParams(event.body || "");
+      const p = new URLSearchParams(rawBody);
       name = (p.get("name") || "").trim();
       email = (p.get("email") || "").trim();
     }
@@ -103,7 +107,9 @@ EmptyNestMarriage.com`;
 
     // Save the subscriber so the daily drip can send the follow-up emails.
     // (step 0 = guide sent; the drip sends emails 2–5 on days 2/4/7/10.)
+    // Loaded dynamically so a storage hiccup can NEVER block the guide email.
     try {
+      const { getStore } = await import("@netlify/blobs");
       const store = getStore("subscribers");
       await store.setJSON(email.toLowerCase(), {
         email: email,
