@@ -118,7 +118,11 @@ export default async () => {
     return new Response("Missing token", { status: 500 });
   }
 
-  const store = getStore("subscribers");
+  const store = getStore({
+    name: "subscribers",
+    siteID: process.env.NETLIFY_SITE_ID,
+    token: process.env.NETLIFY_API_TOKEN
+  });
   const { blobs } = await store.list();
   const now = Date.now();
   let sent = 0;
