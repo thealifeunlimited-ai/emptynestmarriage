@@ -12,7 +12,7 @@ import { getStore } from "@netlify/blobs";
 
 // Days after signup that each follow-up should send.
 // (Email 1 — the guide — is sent immediately at signup by subscribe.js.)
-const SCHEDULE = [2, 4, 7, 10];
+export const SCHEDULE = [2, 4, 7, 10];
 
 const FOOTER = `
   <p style="font-size:12px;color:#7a8a80;border-top:1px solid #e0d8c8;padding-top:12px;margin-top:20px;">
@@ -35,7 +35,7 @@ const COMMUNITY = `https://www.skool.com/empty-nesters-7478`;
 const PROGRAM = `https://emptynestmarriage.com/sales-page.html`;
 
 // Follow-up emails 2–5 (Email 1/the guide is handled at signup).
-const FOLLOWUPS = [
+export const FOLLOWUPS = [
   {
     subject: "We almost didn't make it",
     html: (first) => wrap(`
@@ -86,7 +86,7 @@ const FOLLOWUPS = [
   }
 ];
 
-async function sendEmail(token, from, to, subject, html) {
+export async function sendEmail(token, from, to, subject, html) {
   const res = await fetch("https://api.postmarkapp.com/email", {
     method: "POST",
     headers: {
@@ -105,9 +105,9 @@ async function sendEmail(token, from, to, subject, html) {
   if (!res.ok) {
     const t = await res.text();
     console.log("Postmark send failed for", to, ":", t);
-    return false;
+    return { ok: false, error: t };
   }
-  return true;
+  return { ok: true, error: "" };
 }
 
 export default async () => {
@@ -131,12 +131,14 @@ export default async () => {
     const daysSince = (now - new Date(sub.startDate).getTime()) / 86400000;
     if (daysSince >= SCHEDULE[sub.step]) {
       const fu = FOLLOWUPS[sub.step];
-      const ok = await sendEmail(token, from, sub.email, fu.subject, fu.html(sub.name || "friend"));
-      if (ok) {
+      const r = await sendEmail(token, from, sub.email, fu.subject, fu.html(sub.name || "friend"));
+      if (r.ok) {
         sub.step += 1;
         sub.lastSent = new Date().toISOString();
         await store.setJSON(b.key, sub);
         sent++;
+      } else {
+        console.log("Send failed for", sub.email, ":", r.error);
       }
     }
   }
