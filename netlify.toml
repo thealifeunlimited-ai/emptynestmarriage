@@ -4,3 +4,5 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
+  # Use Netlify's runtime-provided Blobs (don't inline it) so storage is configured.
+  external_node_modules = ["@netlify/blobs"]

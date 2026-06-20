@@ -108,6 +108,7 @@ EmptyNestMarriage.com`;
     // Save the subscriber so the daily drip can send the follow-up emails.
     // (step 0 = guide sent; the drip sends emails 2–5 on days 2/4/7/10.)
     // Loaded dynamically so a storage hiccup can NEVER block the guide email.
+    let saveStatus = "saved";
     try {
       const { getStore } = await import("@netlify/blobs");
       const store = getStore("subscribers");
@@ -119,10 +120,11 @@ EmptyNestMarriage.com`;
       });
     } catch (e) {
       // Don't fail the signup if storage hiccups — they still got the guide.
-      console.log("Could not save subscriber:", e && e.message);
+      saveStatus = "save-failed: " + (e && e.message ? e.message : String(e));
+      console.log("Could not save subscriber:", saveStatus);
     }
 
-    return { statusCode: 200, body: "OK" };
+    return { statusCode: 200, body: "OK | " + saveStatus };
   } catch (e) {
     return { statusCode: 500, body: "Error: " + (e && e.message ? e.message : String(e)) };
   }
