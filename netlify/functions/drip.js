@@ -120,8 +120,8 @@ export default async () => {
 
   const store = getStore({
     name: "subscribers",
-    siteID: process.env.NETLIFY_SITE_ID,
-    token: process.env.NETLIFY_API_TOKEN
+    siteID: process.env.BLOBS_SITE_ID || process.env.NETLIFY_SITE_ID,
+    token: process.env.BLOBS_TOKEN
   });
   const { blobs } = await store.list();
   const now = Date.now();

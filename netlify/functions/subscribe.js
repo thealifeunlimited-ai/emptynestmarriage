@@ -113,8 +113,8 @@ EmptyNestMarriage.com`;
       const { getStore } = await import("@netlify/blobs");
       const store = getStore({
         name: "subscribers",
-        siteID: process.env.NETLIFY_SITE_ID,
-        token: process.env.NETLIFY_API_TOKEN
+        siteID: process.env.BLOBS_SITE_ID || process.env.NETLIFY_SITE_ID,
+        token: process.env.BLOBS_TOKEN
       });
       await store.setJSON(email.toLowerCase(), {
         email: email,
