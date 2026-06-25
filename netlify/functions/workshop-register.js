@@ -3,7 +3,7 @@
 //
 // >>> EDIT THESE 3 LINES with your real workshop details, then redeploy <<<
 const WORKSHOP_TITLE = "Reconnect: An Evening for Empty Nest Couples";
-const WORKSHOP_WHEN  = "[DATE & TIME — e.g., Thursday, July 17 at 6:00pm Arizona time]";
+const WORKSHOP_WHEN  = "Saturday, July 18 at 1:00 PM (Arizona Time)";
 const WORKSHOP_LINK  = "[ZOOM LINK — paste your Zoom/Meet registration or join link]";
 
 export async function handler(event) {
