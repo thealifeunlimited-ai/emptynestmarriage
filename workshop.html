@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="logo-emblem.svg">
+  <title>Free Workshop | Empty Nest Marriage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--cream:#F7F3EA;--green:#0F2A1E;--gold:#C8A24A;--white:#FFFFFF;--cream-muted:#E8DCC8;}
+    body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--green);line-height:1.7;}
+
+    .nav{position:sticky;top:0;z-index:100;background:var(--green);border-bottom:3px solid var(--gold);display:flex;align-items:center;justify-content:space-between;padding:16px 32px;flex-wrap:wrap;gap:12px;}
+    .nav-brand{font-family:'Oswald',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold);text-decoration:none;}
+    .nav-links{display:flex;gap:28px;flex-wrap:wrap;align-items:center;}
+    .nav-links a{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--cream);text-decoration:none;transition:color .2s;}
+    .nav-links a:hover{color:var(--gold);}
+    @media(max-width:768px){.nav{padding:14px 20px;}.nav-links{gap:16px;}}
+
+    .hero{background:var(--green);padding:70px 24px 80px;text-align:center;}
+    .hero .eyebrow{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+    .hero h1{font-family:'Oswald',sans-serif;font-size:clamp(34px,5.5vw,60px);font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--cream);line-height:1.1;margin-bottom:22px;max-width:820px;margin-left:auto;margin-right:auto;}
+    .hero h1 span{color:var(--gold);}
+    .hero .sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(18px,2.5vw,24px);color:var(--cream-muted);max-width:600px;margin:0 auto 26px;}
+    .when{display:inline-block;background:rgba(200,162,74,0.15);border:2px solid var(--gold);border-radius:8px;padding:12px 24px;color:var(--cream);font-family:'Oswald',sans-serif;letter-spacing:1px;text-transform:uppercase;font-size:15px;margin-bottom:32px;}
+    .btn-gold{display:inline-block;background:var(--gold);color:var(--green);font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:18px 48px;text-decoration:none;transition:all .2s;border:none;cursor:pointer;}
+    .btn-gold:hover{background:var(--cream);transform:translateY(-2px);}
+
+    .section{padding:72px 24px;}
+    .inner{max-width:760px;margin:0 auto;}
+    .label{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;text-align:center;}
+    h2{font-family:'Oswald',sans-serif;font-size:clamp(26px,4vw,40px);font-weight:700;text-transform:uppercase;letter-spacing:2px;line-height:1.15;margin-bottom:24px;text-align:center;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:36px;}
+    .card{background:#fff;border:2px solid var(--green);border-radius:8px;padding:28px 24px;box-shadow:4px 4px 0 var(--cream-muted);}
+    .card .n{font-family:'Oswald',sans-serif;font-size:34px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:10px;}
+    .card h3{font-family:'Oswald',sans-serif;font-size:17px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+    .card p{font-size:15px;color:#3a5a48;margin:0;}
+
+    .who{background:var(--white);border-top:2px solid var(--green);border-bottom:2px solid var(--green);}
+    ul.clean{list-style:none;margin-top:20px;}
+    ul.clean li{font-size:17px;padding:11px 0 11px 32px;position:relative;border-bottom:1px solid var(--cream-muted);}
+    ul.clean li:last-child{border-bottom:none;}
+    ul.clean li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700;}
+
+    .hostbox{display:flex;gap:28px;align-items:center;max-width:680px;margin:0 auto;flex-wrap:wrap;justify-content:center;}
+    .hostbox img{width:150px;height:150px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);box-shadow:0 6px 18px rgba(0,0,0,0.12);}
+    .hostbox .t{flex:1;min-width:240px;}
+
+    .reg{background:var(--cream);}
+    .regbox{background:var(--green);border:2px solid var(--gold);border-radius:8px;padding:52px 44px;text-align:center;box-shadow:6px 6px 0 var(--gold);}
+    .regbox h2{color:var(--cream);}
+    .regbox p{color:var(--cream-muted);font-size:17px;max-width:480px;margin:0 auto 30px;}
+    .form-row{display:flex;gap:12px;max-width:480px;margin:0 auto 14px;flex-wrap:wrap;}
+    .form-row input{flex:1;min-width:200px;padding:16px 20px;font-family:'Montserrat',sans-serif;font-size:15px;border:2px solid var(--cream-muted);background:var(--cream);color:var(--green);outline:none;}
+    .form-row input:focus{border-color:var(--gold);}
+    .reg-btn{width:100%;max-width:480px;background:var(--gold);color:var(--green);font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:18px;border:none;cursor:pointer;display:block;margin:0 auto;transition:all .2s;}
+    .reg-btn:hover{background:var(--cream);}
+    .fine{font-size:13px;color:var(--cream-muted);margin-top:14px;opacity:.8;}
+    #reg-thanks{display:none;}
+
+    .footer{background:var(--green);color:var(--cream-muted);text-align:center;padding:34px 24px;border-top:3px solid var(--gold);}
+    .footer .fbrand{font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+    .footer .dom{color:var(--gold);font-family:'Oswald',sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:14px;margin-top:6px;}
+    @media(max-width:768px){.hero{padding:54px 20px 60px;}.section{padding:54px 20px;}.regbox{padding:40px 24px;}}
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-brand" style="display:flex;align-items:center;gap:10px;"><img src="logo-emblem-light.svg" alt="Empty Nest Marriage" style="height:38px;width:auto;"><span>Empty Nest Marriage</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="my-coaching-page.html">Free Guide</a>
+      <a href="sales-page.html">The Program</a>
+      <a href="faq-page.html">FAQ</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="eyebrow">Free Live Workshop · Couples 50+</p>
+    <h1>Reconnect: An Evening for <span>Empty Nest Couples</span></h1>
+    <p class="sub">The kids are gone and the house got quiet. Come spend one real hour rediscovering each other — with two coaches who've been exactly where you are.</p>
+    <div class="when">🗓️ [DATE &amp; TIME] · Live on Zoom · Free</div>
+    <br>
+    <a href="#register" class="btn-gold">Save Our Spot →</a>
+  </section>
+
+  <!-- WHAT YOU'LL GET -->
+  <section class="section">
+    <div class="inner">
+      <p class="label">What You'll Walk Away With</p>
+      <h2>One Hour. Real Change.</h2>
+      <div class="grid">
+        <div class="card"><div class="n">1</div><h3>A Real Conversation</h3><p>The exact question that gets you talking again — try it that very night.</p></div>
+        <div class="card"><div class="n">2</div><h3>The Reconnect Framework</h3><p>3 of our 5 "Reignite" shifts, walked through live — practical, not preachy.</p></div>
+        <div class="card"><div class="n">3</div><h3>A Little Hope</h3><p>Proof this chapter can be the best one yet — and a clear first step to get there.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="section who">
+    <div class="inner">
+      <p class="label">Is This You?</p>
+      <h2>This Workshop Is For You If…</h2>
+      <ul class="clean">
+        <li>You're 50+ (or close) and the kids have left or are about to</li>
+        <li>You love your spouse but feel more like roommates lately</li>
+        <li>You've got a good marriage that's gotten a little too quiet</li>
+        <li>You're ready to laugh, be real, and reconnect — together</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- HOSTS -->
+  <section class="section">
+    <div class="inner">
+      <p class="label">Your Hosts</p>
+      <div class="hostbox">
+        <img src="billy-maryruth.jpg" alt="Billy and Maryruth Mitchell">
+        <div class="t">
+          <h2 style="text-align:left;margin-bottom:14px;">Billy &amp; Maryruth</h2>
+          <p>We're a real couple who coaches real couples. We hit the empty-nest wall ourselves — and clawed our way to the other side, where we genuinely have more fun and connection than we did in our 30s. No therapy couch, no corporate nonsense. Just real talk with a little humor and a lot of heart.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTER -->
+  <section class="section reg" id="register">
+    <div class="inner">
+      <div class="regbox">
+        <form id="reg-form" name="workshop-signup" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="#register">
+          <input type="hidden" name="form-name" value="workshop-signup">
+          <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+          <h2>Save Your Spot — Free</h2>
+          <p>Pop in your name and email and we'll send your workshop details and the Zoom link straight to your inbox.</p>
+          <div class="form-row">
+            <input type="text" id="rf-name" name="name" placeholder="Your first name" required>
+            <input type="email" id="rf-email" name="email" placeholder="Your best email" required>
+          </div>
+          <button type="submit" class="reg-btn">Register Free →</button>
+          <p class="fine">We'll only email you about the workshop. No spam, unsubscribe anytime.</p>
+        </form>
+        <div id="reg-thanks">
+          <h2>You're In! 🎉</h2>
+          <p id="rf-thanks-line">Check your inbox — we just sent your workshop details and the join link. Can't wait to see you both there!</p>
+          <a href="index.html" class="reg-btn" style="text-decoration:none;display:inline-block;max-width:none;">Back to Home →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="fbrand">Billy &amp; Maryruth Mitchell</div>
+    <div>Couples Coaching for Empty Nesters</div>
+    <div class="dom">EmptyNestMarriage.com</div>
+  </footer>
+
+  <script>
+    var f = document.getElementById('reg-form');
+    if (f) {
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = (document.getElementById('rf-name').value || '').trim();
+        var body = new URLSearchParams(new FormData(f)).toString();
+        var opts = { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body };
+        var done = function () {
+          if (name) document.getElementById('rf-thanks-line').textContent =
+            'Thanks, ' + name + '! Check your inbox — we just sent your workshop details and the join link. Can\'t wait to see you both there!';
+          f.style.display = 'none';
+          document.getElementById('reg-thanks').style.display = 'block';
+          document.getElementById('reg-thanks').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        };
+        Promise.allSettled([
+          fetch('/', opts),
+          fetch('/.netlify/functions/workshop-register', opts)
+        ]).then(done, done);
+      });
+    }
+  </script>
+
+</body>
+</html>
