@@ -6,7 +6,7 @@
 <rect x="0" y="623" width="1200" height="7" fill="#e94560"/>
 <ellipse cx="1050" cy="150" rx="220" ry="220" fill="#16213e" opacity="0.8"/>
 <ellipse cx="150" cy="500" rx="160" ry="160" fill="#16213e" opacity="0.6"/>
-<circle cx="600" cy="315" rx="260" ry="260" fill="#16213e" opacity="0.3"/>
+<circle cx="600" cy="315" r="260" fill="#16213e" opacity="0.3"/>
 <rect x="80" y="55" width="320" height="3" fill="#e94560" opacity="0.8"/>
 <text x="80" y="115" font-family="Georgia, serif" font-size="22" fill="#e8b4b8" letter-spacing="5" font-weight="400">EMPTY NEST MARRIAGE PRESENTS</text>
 <text x="80" y="220" font-family="Georgia, serif" font-size="90" fill="#ffffff" font-weight="700" letter-spacing="-2">Reconnect</text>
