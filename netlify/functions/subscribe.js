@@ -58,13 +58,15 @@ export async function handler(event) {
       <a href="https://www.skool.com/empty-nesters-7478" style="color:#C8A24A;font-weight:bold;">join us here</a>.</p>
     <p>We'll be in touch over the next couple weeks with the real stuff. Keep an eye out.</p>
     <p>You've got this.<br>— Billy &amp; Maryruth</p>
+    <p>P.S. — Hit reply and tell us how long you've been married. We read every one.</p>
   </div>
   <div style="background:#0F2A1E;padding:16px;text-align:center;">
     <span style="color:#C8A24A;font-size:12px;letter-spacing:2px;text-transform:uppercase;">EmptyNestMarriage.com</span>
   </div>
-  <p style="font-size:11px;color:#9aa89e;text-align:center;padding:14px 24px 0;line-height:1.5;">
-    You received this because you requested our free guide at EmptyNestMarriage.com.<br>
-    Billy &amp; Maryruth Mitchell · Prefer not to hear from us? Just reply with "unsubscribe."
+  <p style="font-size:12px;color:#7a8a80;border-top:1px solid #e0d8c8;padding-top:12px;margin-top:20px;">
+    You're getting this because you grabbed our free guide at EmptyNestMarriage.com.
+    Not your thing anymore? <a href="{{{ pm:unsubscribe }}}" style="color:#C8A24A;">Unsubscribe here</a> — no hard feelings.<br>
+    Billy &amp; Maryruth Mitchell · PO Box 1107, Seligman, AZ 86337
   </p>
 </div>`.trim();
 
@@ -96,7 +98,7 @@ EmptyNestMarriage.com`;
         Subject: "Your Reignite guide is inside",
         HtmlBody: html,
         TextBody: text,
-        MessageStream: "outbound"
+        MessageStream: "broadcast"
       })
     });
 

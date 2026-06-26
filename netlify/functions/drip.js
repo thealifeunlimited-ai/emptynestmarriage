@@ -68,7 +68,8 @@ export const FOLLOWUPS = [
       <p>But they started small. One real conversation. A little affection. An actual date. Three months in, Carol emailed us: <em>"We stayed up talking until midnight. I forgot what it felt like to actually like him."</em> And Jim? He's the one planning the dates now.</p>
       <p>Carol and Jim aren't special. They were just two good people who decided to stop waiting. That's available to you too — starting this week.</p>
       <p>Our community is full of couples just like them: <a href="${COMMUNITY}" style="color:#C8A24A;font-weight:bold;">come meet them</a>.</p>
-      <p>— Billy &amp; Maryruth</p>`)
+      <p>— Billy &amp; Maryruth</p>
+      <p>P.S. — Tomorrow I want to share something we put together specifically for couples who are ready to go deeper. Keep an eye out.</p>`)
   },
   {
     subject: "If you're ready, here's the next step",
