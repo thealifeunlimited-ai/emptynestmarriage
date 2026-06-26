@@ -4,7 +4,7 @@
 // >>> EDIT THESE 3 LINES with your real workshop details, then redeploy <<<
 const WORKSHOP_TITLE = "Reconnect: An Evening for Empty Nest Couples";
 const WORKSHOP_WHEN  = "Saturday, July 18 at 1:00 PM (Arizona Time)";
-const WORKSHOP_LINK  = "[ZOOM LINK — paste your Zoom/Meet registration or join link]";
+const WORKSHOP_LINK  = "https://us06web.zoom.us/j/84272976582?pwd=uqbGwbDOdmZhBBYucmxpCoDTxIOQOb.1";
 
 export async function handler(event) {
   if (event.httpMethod !== "POST") return { statusCode: 405, body: "Method Not Allowed" };
