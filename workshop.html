@@ -96,7 +96,7 @@
     <p class="eyebrow">Free Live Workshop · Couples 50+</p>
     <h1>Reconnect: An Evening for <span>Empty Nest Couples</span></h1>
     <p class="sub">The kids are gone and the house got quiet. Come spend one real hour rediscovering each other — with two coaches who've been exactly where you are.</p>
-    <div class="when">🗓️ Saturday, July 18 · 1:00 PM (Arizona Time) · Live on Zoom · Free</div>
+    <div class="when">🗓️ Saturday, July 18 · 1:00 PM Arizona Time (1 PM Pacific / 2 PM Mountain / 3 PM Central / 4 PM Eastern) · Live on Zoom · Free</div>
     <br>
     <a href="#register" class="btn-gold">Save Our Spot →</a>
   </section>
@@ -151,6 +151,8 @@
           <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
           <h2>Save Your Spot — Free</h2>
           <p>Pop in your name and email and we'll send your workshop details and the Zoom link straight to your inbox.</p>
+          <p style="color:var(--cream-muted);font-size:14px;opacity:.85;margin:-6px auto 18px;max-width:480px;">Can't make it live? Register anyway — we'll send you the replay.</p>
+          <input type="hidden" id="rf-utm" name="utm_source" value="">
           <div class="form-row">
             <input type="text" id="rf-name" name="name" placeholder="Your first name" required>
             <input type="email" id="rf-email" name="email" placeholder="Your best email" required>
@@ -161,7 +163,8 @@
         <div id="reg-thanks">
           <h2>You're In! 🎉</h2>
           <p id="rf-thanks-line">Check your inbox — we just sent your workshop details and the join link. Can't wait to see you both there!</p>
-          <a href="index.html" class="reg-btn" style="text-decoration:none;display:inline-block;max-width:none;">Back to Home →</a>
+          <a id="rf-calendar-link" href="#" target="_blank" rel="noopener" class="reg-btn" style="text-decoration:none;display:inline-block;max-width:none;margin-bottom:12px;">Add to Google Calendar →</a>
+          <a href="index.html" class="reg-btn" style="text-decoration:none;display:inline-block;max-width:none;background:transparent;border:2px solid var(--gold);color:var(--cream);">Back to Home →</a>
         </div>
       </div>
     </div>
@@ -174,6 +177,21 @@
   </footer>
 
   <script>
+    // Capture ?utm_source=... (or ?source=...) from the landing URL so we know which
+    // post/channel drove the registration. Stored on the registrant record server-side.
+    var utmField = document.getElementById('rf-utm');
+    if (utmField) {
+      var qp = new URLSearchParams(window.location.search);
+      utmField.value = qp.get('utm_source') || qp.get('source') || '';
+    }
+
+    // Google Calendar "add event" link — Sat July 18, 1:00 PM–2:00 PM Arizona Time (UTC-7).
+    var CALENDAR_LINK = 'https://www.google.com/calendar/render?action=TEMPLATE'
+      + '&text=' + encodeURIComponent('Reconnect: An Evening for Empty Nest Couples')
+      + '&dates=20260718T200000Z/20260718T210000Z'
+      + '&details=' + encodeURIComponent('Free live workshop with Billy & Maryruth Mitchell. Check your email for the Zoom join link, or visit https://emptynestmarriage.com/workshop.html')
+      + '&location=' + encodeURIComponent('Online via Zoom');
+
     var f = document.getElementById('reg-form');
     if (f) {
       f.addEventListener('submit', function (e) {
@@ -184,6 +202,8 @@
         var done = function () {
           if (name) document.getElementById('rf-thanks-line').textContent =
             'Thanks, ' + name + '! Check your inbox — we just sent your workshop details and the join link. Can\'t wait to see you both there!';
+          var cal = document.getElementById('rf-calendar-link');
+          if (cal) cal.href = CALENDAR_LINK;
           f.style.display = 'none';
           document.getElementById('reg-thanks').style.display = 'block';
           document.getElementById('reg-thanks').scrollIntoView({ behavior: 'smooth', block: 'center' });

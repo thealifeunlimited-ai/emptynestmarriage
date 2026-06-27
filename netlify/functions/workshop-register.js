@@ -4,8 +4,15 @@
 //
 // >>> EDIT THESE 3 LINES with your real workshop details, then redeploy <<<
 const WORKSHOP_TITLE = "Reconnect: An Evening for Empty Nest Couples";
-const WORKSHOP_WHEN  = "Saturday, July 18 at 1:00 PM (Arizona Time)";
+const WORKSHOP_WHEN  = "Saturday, July 18 at 1:00 PM Arizona Time (1 PM Pacific / 2 PM Mountain / 3 PM Central / 4 PM Eastern)";
 const WORKSHOP_LINK  = "https://us06web.zoom.us/j/84272976582?pwd=uqbGwbDOdmZhBBYucmxpCoDTxIOQOb.1";
+
+// Google Calendar "add event" link — Sat July 18, 1:00 PM–2:00 PM Arizona Time (UTC-7).
+const CALENDAR_LINK = "https://www.google.com/calendar/render?action=TEMPLATE"
+  + "&text=" + encodeURIComponent("Reconnect: An Evening for Empty Nest Couples")
+  + "&dates=20260718T200000Z/20260718T210000Z"
+  + "&details=" + encodeURIComponent("Free live workshop with Billy & Maryruth Mitchell. Check your email for the Zoom join link, or visit https://emptynestmarriage.com/workshop.html")
+  + "&location=" + encodeURIComponent("Online via Zoom");
 
 // "Workshop Registrant - July 18" tag, created in Kit — applied to everyone who registers.
 const KIT_WORKSHOP_TAG_ID = 20671007;
@@ -17,14 +24,16 @@ export async function handler(event) {
     let rawBody = event.body || "";
     if (event.isBase64Encoded) rawBody = Buffer.from(rawBody, "base64").toString("utf8");
 
-    let name = "", email = "";
+    let name = "", email = "", utmSource = "";
     const ct = (event.headers["content-type"] || "").toLowerCase();
     if (ct.includes("application/json")) {
       const j = JSON.parse(rawBody || "{}");
       name = (j.name || "").trim(); email = (j.email || "").trim();
+      utmSource = (j.utm_source || "").trim();
     } else {
       const p = new URLSearchParams(rawBody);
       name = (p.get("name") || "").trim(); email = (p.get("email") || "").trim();
+      utmSource = (p.get("utm_source") || "").trim();
     }
     if (!email) return { statusCode: 400, body: "Email is required" };
 
@@ -46,7 +55,11 @@ export async function handler(event) {
     <p style="text-align:center;margin:24px 0;">
       <a href="${WORKSHOP_LINK}" style="background:#C8A24A;color:#0F2A1E;text-decoration:none;font-weight:bold;text-transform:uppercase;letter-spacing:1px;padding:14px 28px;border-radius:4px;display:inline-block;">Save Your Spot / Join Link →</a>
     </p>
+    <p style="text-align:center;margin:0 0 24px;">
+      <a href="${CALENDAR_LINK}" style="color:#C8A24A;font-weight:bold;text-decoration:none;">+ Add to Google Calendar</a>
+    </p>
     <p>Come as you are — both of you if you can. It'll be real, a little funny, and you'll walk away with something you can use that very night.</p>
+    <p>Can't make it live? No worries — we'll send you the replay.</p>
     <p>Can't wait to see you there.<br>— Billy &amp; Maryruth</p>
   </div>
   <div style="background:#0F2A1E;padding:14px;text-align:center;">
@@ -74,7 +87,7 @@ export async function handler(event) {
         siteID: process.env.BLOBS_SITE_ID || process.env.NETLIFY_SITE_ID,
         token: process.env.BLOBS_TOKEN
       });
-      await store.setJSON(email.toLowerCase(), { email, name: first, registeredAt: new Date().toISOString() });
+      await store.setJSON(email.toLowerCase(), { email, name: first, registeredAt: new Date().toISOString(), source: utmSource || "direct" });
     } catch (e) {
       saveStatus = "save-failed: " + (e && e.message ? e.message : String(e));
     }
