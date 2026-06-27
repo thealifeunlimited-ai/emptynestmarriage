@@ -4,6 +4,10 @@
 // Set these in Netlify: Site settings → Environment variables
 //   POSTMARK_TOKEN  = your Postmark Server API Token
 //   FROM_EMAIL      = hello@emptynestmarriage.com   (optional; defaults below)
+//   KIT_API_KEY     = your Kit (ConvertKit) v4 API Key (optional; skips Kit sync if unset)
+
+// "Empty Nest Marriage Subscriber" tag, created in Kit — applied to everyone who grabs the guide.
+const KIT_SUBSCRIBER_TAG_ID = 20671005;
 
 export async function handler(event) {
   if (event.httpMethod !== "POST") {
@@ -128,6 +132,41 @@ EmptyNestMarriage.com`;
       // Don't fail the signup if storage hiccups — they still got the guide.
       saveStatus = "save-failed: " + (e && e.message ? e.message : String(e));
       console.log("Could not save subscriber:", saveStatus);
+    }
+
+    // Sync to Kit (ConvertKit) so subscribers also land in Billy & Maryruth's list manager.
+    // Wrapped so a Kit API hiccup can NEVER block the guide email or the response above.
+    let kitStatus = "skipped (no KIT_API_KEY)";
+    const kitKey = process.env.KIT_API_KEY;
+    if (kitKey) {
+      try {
+        const kitRes = await fetch("https://api.kit.com/v4/subscribers", {
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-Kit-Api-Key": kitKey
+          },
+          body: JSON.stringify({ email_address: email, first_name: first })
+        });
+        if (kitRes.ok) {
+          await fetch(`https://api.kit.com/v4/tags/${KIT_SUBSCRIBER_TAG_ID}/subscribers`, {
+            method: "POST",
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json",
+              "X-Kit-Api-Key": kitKey
+            },
+            body: JSON.stringify({ email_address: email })
+          });
+          kitStatus = "synced";
+        } else {
+          kitStatus = "kit-failed: " + (await kitRes.text());
+        }
+      } catch (e) {
+        kitStatus = "kit-failed: " + (e && e.message ? e.message : String(e));
+      }
+      console.log("Kit sync:", kitStatus);
     }
 
     return { statusCode: 200, body: "OK | " + saveStatus };

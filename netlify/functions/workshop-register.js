@@ -1,10 +1,14 @@
 // Netlify Function: registers someone for the free workshop.
 // Sends a confirmation email via Postmark + saves them to storage.
+// Also syncs to Kit (ConvertKit) if KIT_API_KEY is set in Netlify env vars.
 //
 // >>> EDIT THESE 3 LINES with your real workshop details, then redeploy <<<
 const WORKSHOP_TITLE = "Reconnect: An Evening for Empty Nest Couples";
 const WORKSHOP_WHEN  = "Saturday, July 18 at 1:00 PM (Arizona Time)";
 const WORKSHOP_LINK  = "https://us06web.zoom.us/j/84272976582?pwd=uqbGwbDOdmZhBBYucmxpCoDTxIOQOb.1";
+
+// "Workshop Registrant - July 18" tag, created in Kit — applied to everyone who registers.
+const KIT_WORKSHOP_TAG_ID = 20671007;
 
 export async function handler(event) {
   if (event.httpMethod !== "POST") return { statusCode: 405, body: "Method Not Allowed" };
@@ -73,6 +77,41 @@ export async function handler(event) {
       await store.setJSON(email.toLowerCase(), { email, name: first, registeredAt: new Date().toISOString() });
     } catch (e) {
       saveStatus = "save-failed: " + (e && e.message ? e.message : String(e));
+    }
+
+    // Sync to Kit (ConvertKit) so registrants also land in Billy & Maryruth's list manager.
+    // Wrapped so a Kit API hiccup can NEVER block the confirmation email or the response above.
+    let kitStatus = "skipped (no KIT_API_KEY)";
+    const kitKey = process.env.KIT_API_KEY;
+    if (kitKey) {
+      try {
+        const kitRes = await fetch("https://api.kit.com/v4/subscribers", {
+          method: "POST",
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-Kit-Api-Key": kitKey
+          },
+          body: JSON.stringify({ email_address: email, first_name: first })
+        });
+        if (kitRes.ok) {
+          await fetch(`https://api.kit.com/v4/tags/${KIT_WORKSHOP_TAG_ID}/subscribers`, {
+            method: "POST",
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json",
+              "X-Kit-Api-Key": kitKey
+            },
+            body: JSON.stringify({ email_address: email })
+          });
+          kitStatus = "synced";
+        } else {
+          kitStatus = "kit-failed: " + (await kitRes.text());
+        }
+      } catch (e) {
+        kitStatus = "kit-failed: " + (e && e.message ? e.message : String(e));
+      }
+      console.log("Kit sync:", kitStatus);
     }
 
     return { statusCode: 200, body: "OK | " + saveStatus };
