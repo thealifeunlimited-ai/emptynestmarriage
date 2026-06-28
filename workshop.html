@@ -60,9 +60,11 @@
     .hostbox img{width:150px;height:150px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);box-shadow:0 6px 18px rgba(0,0,0,0.12);}
     .hostbox .t{flex:1;min-width:240px;}
 
-    .quote-section{background:var(--green);text-align:center;}
-    .quote-section blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(20px,2.8vw,28px);color:var(--cream);line-height:1.5;margin-bottom:18px;max-width:680px;margin-left:auto;margin-right:auto;}
-    .quote-attr{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
+    .proof{background:var(--white);border-top:2px solid var(--green);border-bottom:2px solid var(--green);}
+    .tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;margin-top:36px;}
+    .tcard{background:#fff;border:2px solid var(--green);border-radius:8px;padding:28px 24px;box-shadow:4px 4px 0 var(--cream-muted);}
+    .tcard p{font-size:15px;font-style:italic;color:var(--green);margin-bottom:14px;}
+    .tcard .tattr{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#2a4a38;font-style:normal;}
 
     .reg{background:var(--cream);}
     .regbox{background:var(--green);border:2px solid var(--gold);border-radius:8px;padding:52px 44px;text-align:center;box-shadow:6px 6px 0 var(--gold);}
@@ -147,10 +149,24 @@
   </section>
 
   <!-- SOCIAL PROOF -->
-  <section class="section quote-section">
+  <section class="section proof">
     <div class="inner">
-      <blockquote>"Billy and Maryruth's skilled and intuitive guidance — the process evolved into an insightful and enjoyable journey. Thank you, Billy and Maryruth!"</blockquote>
-      <p class="quote-attr">— RR, Past Workshop Attendee</p>
+      <p class="label">What Couples Are Saying</p>
+      <h2>Real Reactions From Past Workshops</h2>
+      <div class="tgrid">
+        <div class="tcard">
+          <p>"Billy and Maryruth's skilled and intuitive guidance — the process evolved into an insightful and enjoyable journey. Thank you, Billy and Maryruth!"</p>
+          <p class="tattr">— RR</p>
+        </div>
+        <div class="tcard">
+          <p>"I want to take this moment to thank Billy &amp; Maryruth for putting on such a helpful and enjoyable event."</p>
+          <p class="tattr">— GH</p>
+        </div>
+        <div class="tcard">
+          <p>"I'm always amazed at how much fun we can have while learning."</p>
+          <p class="tattr">— CRP</p>
+        </div>
+      </div>
     </div>
   </section>
 
