@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="logo-emblem.svg">
+  <title>You're In! The Spark | Empty Nest Marriage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--cream:#F7F3EA;--green:#0F2A1E;--gold:#C8A24A;--white:#FFFFFF;--cream-muted:#E8DCC8;}
+    body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--green);line-height:1.7;}
+
+    .nav{position:sticky;top:0;z-index:100;background:var(--green);border-bottom:3px solid var(--gold);display:flex;align-items:center;justify-content:space-between;padding:16px 32px;flex-wrap:wrap;gap:12px;}
+    .nav-brand{font-family:'Oswald',sans-serif;font-size:17px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--gold);text-decoration:none;}
+    .nav-links{display:flex;gap:28px;flex-wrap:wrap;align-items:center;}
+    .nav-links a{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--cream);text-decoration:none;transition:color .2s;}
+    .nav-links a:hover{color:var(--gold);}
+    @media(max-width:768px){.nav{padding:14px 20px;}.nav-links{gap:16px;}}
+
+    .hero{background:var(--green);padding:72px 24px 80px;text-align:center;}
+    .hero .photo{width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);box-shadow:0 6px 20px rgba(0,0,0,0.3);margin-bottom:26px;}
+    .eyebrow{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+    .hero h1{font-family:'Oswald',sans-serif;font-size:clamp(32px,5.5vw,56px);font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--cream);line-height:1.1;margin-bottom:18px;max-width:760px;margin-left:auto;margin-right:auto;}
+    .hero h1 span{color:var(--gold);}
+    .hero .sub{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(18px,2.5vw,23px);color:var(--cream-muted);}
+
+    .section{padding:72px 24px;}
+    .inner{max-width:680px;margin:0 auto;}
+    .lead{font-size:18px;color:#2a4a38;text-align:center;margin-bottom:36px;}
+
+    .steps{display:flex;flex-direction:column;gap:20px;margin-bottom:14px;}
+    .step{background:var(--white);border:2px solid var(--green);border-radius:10px;padding:28px 30px;box-shadow:5px 5px 0 var(--cream-muted);display:flex;gap:20px;align-items:flex-start;}
+    .step-num{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:var(--green);background:var(--gold);min-width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .step h3{font-family:'Oswald',sans-serif;font-size:18px;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+    .step p{font-size:15px;color:#3a5a48;margin:0;}
+    .step .email-pill{display:inline-block;background:var(--cream);border:1px solid var(--gold);border-radius:4px;padding:2px 8px;font-size:14px;color:var(--green);font-weight:600;}
+
+    .footer{background:var(--green);color:var(--cream-muted);text-align:center;padding:36px 24px;border-top:3px solid var(--gold);}
+    .footer .fbrand{font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+
+    @media(max-width:768px){.hero{padding:54px 20px 60px;}.section{padding:52px 20px;}.step{padding:22px 22px;gap:14px;}}
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-brand" style="display:flex;align-items:center;gap:10px;"><img src="logo-emblem-light.svg" alt="Empty Nest Marriage" style="height:38px;width:auto;"><span>Empty Nest Marriage</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="my-coaching-page.html">Free Guide</a>
+      <a href="sales-page.html">The Program</a>
+      <a href="faq-page.html">FAQ</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="photo" src="billy-maryruth.jpg" alt="Billy and Maryruth Mitchell">
+    <p class="eyebrow">You're In!</p>
+    <h1>Welcome to <span>The Spark</span></h1>
+    <p class="sub">Your purchase is confirmed. We're so glad you're here.</p>
+  </section>
+
+  <!-- NEXT STEPS -->
+  <section class="section">
+    <div class="inner">
+      <p class="lead">Thank you for trusting us with this. Here's what happens next:</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <h3>Check Your Email</h3>
+            <p>Stripe just sent a receipt to the email you checked out with. We'll personally follow up from <span class="email-pill">hello@emptynestmarriage.com</span> with everything you need to get started.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <h3>Add Us to Your Contacts</h3>
+            <p>So our emails actually reach you (and don't get lost in Promotions or Spam), add <span class="email-pill">hello@emptynestmarriage.com</span> to your contacts.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <h3>Questions Before You Dive In?</h3>
+            <p>Just hit reply on that email. You'll get us — the actual humans — not a bot.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="fbrand">Billy &amp; Maryruth Mitchell</div>
+    <div>Couples Coaching for Empty Nesters</div>
+    <div style="color:var(--gold);font-family:'Oswald',sans-serif;letter-spacing:2px;text-transform:uppercase;font-size:14px;margin-top:6px;">EmptyNestMarriage.com</div>
+  </footer>
+
+</body>
+</html>

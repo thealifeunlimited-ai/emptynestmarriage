@@ -654,7 +654,7 @@
   </section>
 
   <!-- PRICING -->
-  <section class="section pricing">
+  <section class="section pricing" id="pricing">
     <div class="section-inner">
       <p class="section-label">Work With Us</p>
       <h2>Ways to Rediscover<br>Each Other</h2>
@@ -673,7 +673,7 @@
             <li>Date night &amp; conversation toolkits</li>
             <li>Lifetime access — go at your pace</li>
           </ul>
-          <a href="#optin" class="tier-btn">Get Started →</a>
+          <a href="#" id="spark-checkout-btn" class="tier-btn">Get Started →</a>
         </div>
 
         <!-- TIER 2 (FEATURED) -->
@@ -879,6 +879,31 @@
         btn.setAttribute('href', BOOKING_URL);
       }
     });
+
+    // The Spark: real Stripe Checkout (instant, self-serve — unlike the other two tiers above)
+    var sparkBtn = document.getElementById('spark-checkout-btn');
+    if (sparkBtn) {
+      sparkBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var original = sparkBtn.textContent;
+        sparkBtn.textContent = 'Loading…';
+        sparkBtn.style.pointerEvents = 'none';
+        fetch('/.netlify/functions/create-checkout-session', { method: 'POST' })
+          .then(function (res) { return res.json(); })
+          .then(function (data) {
+            if (data && data.url) {
+              window.location.href = data.url;
+            } else {
+              throw new Error('No checkout URL returned');
+            }
+          })
+          .catch(function () {
+            sparkBtn.textContent = original;
+            sparkBtn.style.pointerEvents = 'auto';
+            alert("Sorry, we couldn't start checkout. Please try again in a moment.");
+          });
+      });
+    }
   </script>
 
 </body>
