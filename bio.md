@@ -1,6 +1,6 @@
 # Billy & Maryruth Mitchell — Bio
 
-Sourced from the consistent story already told across `index.html`, `sales-page.html`, `my-coaching-page.html`, `workshop.html`, and the "Our Story" drip email. Three lengths for different uses.
+Sourced from the consistent story already told across `index.html`, `the-program.html`, `free-guide.html`, `workshop.html`, and the "Our Story" drip email. Three lengths for different uses.
 
 ---
 

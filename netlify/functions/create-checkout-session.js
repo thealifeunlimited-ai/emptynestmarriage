@@ -16,7 +16,7 @@ export async function handler(event) {
     const params = new URLSearchParams();
     params.append("mode", "payment");
     params.append("success_url", `${SITE_URL}/spark-thank-you.html?session_id={CHECKOUT_SESSION_ID}`);
-    params.append("cancel_url", `${SITE_URL}/my-coaching-page.html#pricing`);
+    params.append("cancel_url", `${SITE_URL}/free-guide.html#pricing`);
     params.append("line_items[0][quantity]", "1");
     params.append("line_items[0][price_data][currency]", "usd");
     params.append("line_items[0][price_data][unit_amount]", "19700");

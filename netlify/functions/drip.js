@@ -32,7 +32,7 @@ function wrap(inner) {
 }
 
 const COMMUNITY = `https://www.skool.com/empty-nesters-7478`;
-const PROGRAM = `https://emptynestmarriage.com/sales-page.html`;
+const PROGRAM = `https://emptynestmarriage.com/the-program.html`;
 
 // Follow-up emails 2–5 (Email 1/the guide is handled at signup).
 export const FOLLOWUPS = [

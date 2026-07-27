@@ -6,3 +6,24 @@
   node_bundler = "esbuild"
   # Use Netlify's runtime-provided Blobs (don't inline it) so storage is configured.
   external_node_modules = ["@netlify/blobs"]
+
+# Old page slugs → new ones, so links already shared in posts/emails keep working.
+[[redirects]]
+  from = "/my-coaching-page.html"
+  to = "/free-guide.html"
+  status = 301
+
+[[redirects]]
+  from = "/my-coaching-page"
+  to = "/free-guide.html"
+  status = 301
+
+[[redirects]]
+  from = "/sales-page.html"
+  to = "/the-program.html"
+  status = 301
+
+[[redirects]]
+  from = "/sales-page"
+  to = "/the-program.html"
+  status = 301

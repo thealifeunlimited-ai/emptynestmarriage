@@ -16,7 +16,7 @@ import { getStore } from "@netlify/blobs";
 const WORKSHOP_TITLE = "Reconnect: An Evening for Empty Nest Couples";
 const WORKSHOP_LINK  = "https://us06web.zoom.us/j/84272976582?pwd=uqbGwbDOdmZhBBYucmxpCoDTxIOQOb.1";
 const COMMUNITY       = "https://www.skool.com/empty-nesters-7478";
-const PROGRAM         = "https://emptynestmarriage.com/sales-page.html";
+const PROGRAM         = "https://emptynestmarriage.com/the-program.html";
 
 // Send the reminder on this date (workshop day, Arizona time), and the
 // replay/follow-up starting on this date (2 days later). Compared against
